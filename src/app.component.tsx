@@ -9,14 +9,16 @@ import NavbarComponent from "./components/navbar/NavbarComponent";
 function RootComponent() {
   return (
     <BrowserRouter>
-      <NavbarComponent />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-      </Routes>
-      <FooterComponent />
+      <div className="font-mono w-full min-h-screen">
+        <NavbarComponent />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+        </Routes>
+        <FooterComponent />
+      </div>
     </BrowserRouter>
   );
 }
