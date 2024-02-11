@@ -20,6 +20,11 @@ function FooterComponent() {
           </div>
 
           <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
+             <div>
+              <Footer.LinkGroup col>
+                <Footer.Link href="/" >Home</Footer.Link>
+              </Footer.LinkGroup>
+            </div>
             <div>
               <Footer.LinkGroup col>
                 <Footer.Link href="/about">About</Footer.Link>
