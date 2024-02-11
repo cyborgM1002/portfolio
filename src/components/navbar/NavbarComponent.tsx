@@ -1,11 +1,12 @@
 import { Navbar, NavbarBrand, NavbarToggle } from "flowbite-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const NavbarComponent = () => {
+  const path = useLocation().pathname;
   return (
-    <Navbar className="border-b-2 border-gray-400 rounded">
+    <Navbar className="border-b-2 border-gray-400 rounded font-mono">
       <NavbarBrand>
-        <Link to={"/"} className="flex justify-center items-center">
+        <Link to={"/"} className="flex justify-start items-center">
           <button className="mr-3 pt-1.5 w-12 h-12 rounded-full bg-g whitespace-nowrap text-3xl font-semibold text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
             CB
           </button>
@@ -14,22 +15,22 @@ const NavbarComponent = () => {
       </NavbarBrand>
       <NavbarToggle />
       <Navbar.Collapse>
-        <Navbar.Link>
+        <Navbar.Link as={"div"} active={path === "/"}>
           <Link className="text-xl" to={"/"}>
             Home
           </Link>
         </Navbar.Link>
-        <Navbar.Link>
+        <Navbar.Link as={"div"} active={path === "/about"}>
           <Link className="text-xl" to={"/about"}>
             About
           </Link>
         </Navbar.Link>
-        <Navbar.Link>
+        <Navbar.Link as={"div"} active={path === "/contact"}>
           <Link className="text-xl" to={"/contact"}>
             Contact
           </Link>
         </Navbar.Link>
-        <Navbar.Link>
+        <Navbar.Link as={"div"} active={path === "/projects"}>
           <Link className="text-xl" to={"/projects"}>
             Projects
           </Link>
