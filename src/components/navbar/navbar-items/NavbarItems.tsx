@@ -20,7 +20,7 @@ function NavbarIcon(value: string) {
 
 const NavbarItems = ({ title }: { title: string }) => {
   return (
-    <Link className="hover:text-blue-700" to={title}>
+    <Link className="hover:text-blue-700" to={title === "home" ? "/" : title}>
       {CapitalizeFirstLetter(title)}
     </Link>
   );
