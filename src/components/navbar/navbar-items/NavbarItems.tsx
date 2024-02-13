@@ -27,7 +27,7 @@ const NavbarItems = ({ title }: { title: string }) => {
 };
 
 export const MobileNavbarItems = ({ title }: { title: string }) => {
-  return <Link to={title}>{NavbarIcon(title)}</Link>;
+  return <Link to={title === "home" ? "/" : title}>{NavbarIcon(title)}</Link>;
 };
 
 export default NavbarItems;
