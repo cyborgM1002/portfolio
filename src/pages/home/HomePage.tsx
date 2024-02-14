@@ -16,7 +16,14 @@ const HomePage = () => {
             alt=""
           />
         </div>
-        <div className="w-2/3">Description</div>
+        <div className="w-2/3">
+          As a dedicated MERN (MongoDB, Express.js, React.js, Node.js)
+          developer, I am passionate about crafting robust and dynamic web
+          applications that deliver exceptional user experiences. With a solid
+          foundation in full-stack development and a keen eye for detail, I
+          thrive in collaborative environments where I can leverage my expertise
+          to drive innovation and achieve project success.
+        </div>
       </div>
     </div>
   );
