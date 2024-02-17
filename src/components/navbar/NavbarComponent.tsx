@@ -1,5 +1,5 @@
 import { menuItems } from "../../Constants/navbar-items/navbarItems";
-import { CapitalizeFirstLetter } from "../../utils/text-capitalizer/TextCapitalizer";
+import { CapitalizeFirstLetter } from "../../utils/TextCapitalizer";
 import LogoIcon from "../logo-component/LogoIcon";
 import NavbarItems, { MobileNavbarItems } from "./navbar-items/NavbarItems";
 
