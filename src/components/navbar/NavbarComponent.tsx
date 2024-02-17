@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { menuItems } from "../../Constants/navbar-items/navbarItems";
 import { CapitalizeFirstLetter } from "../../utils/TextCapitalizer";
 import LogoIcon from "../logo-component/LogoIcon";
 import NavbarItems, { MobileNavbarItems } from "./navbar-items/NavbarItems";
-
+import { PiBugDroidFill } from "react-icons/pi";
 const NavbarComponent = () => {
+  const [showMobileNavbar, setShowMobileNavbar] = useState<boolean>(false);
   return (
     <div className="flex justify-between items-center px-6 py-2 border-b-2 border-gray-400 rounded font-mono box-border">
       <LogoIcon />
@@ -17,14 +19,24 @@ const NavbarComponent = () => {
             );
           })}
         </div>
-        <div className="text-xl flex justify-center items-center gap-5 md:hidden bg-blue-500 absolute bottom-5 left-0 w-4/5 rounded-xl mx-10 py-3 px-5">
+        <div
+          onClick={() => setShowMobileNavbar(!showMobileNavbar)}
+          className="text-3xl block gap-5 md:hidden"
+        >
+          <PiBugDroidFill />
+        </div>
+        <div
+          className={`flex flex-col justify-center items-center gap-5 md:hidden rounded-br-[50px] bg-[rgb(1,134,115)] absolute top-12 left-0 rounded duration-500 py-3 ${
+            showMobileNavbar ? "w-0 -left-10" : "w-1/5"
+          }`}
+        >
           {menuItems?.map(({ title }, index: number) => {
             return (
-              <div className="flex flex-col gap-2 justify-center items-center">
-                <div
-                  key={index}
-                  className="w-12 h-12 text-2xl font-bold bg-gray-50 flex flex-col justify-center items-center rounded-full"
-                >
+              <div
+                key={index}
+                className="flex flex-col gap-2 justify-center items-center"
+              >
+                <div className="text-3xl font-bold text-white">
                   <MobileNavbarItems title={title} />
                 </div>
                 <span className="text-xs text-white">
