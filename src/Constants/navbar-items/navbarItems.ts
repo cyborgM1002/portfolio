@@ -3,10 +3,10 @@ export const menuItems = [
     title: "home",
   },
   {
-    title: "about",
+    title: "skills",
   },
   {
-    title: "contact",
+    title: "experience",
   },
   {
     title: "projects",
