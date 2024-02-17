@@ -11,14 +11,18 @@ function RootComponent() {
   return (
     <BrowserRouter>
       <div className="font-mono w-full min-h-screen">
-        <NavbarComponent />
-        <Routes>
-          <Route path="*" element={<ErrorPage />} />
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-        </Routes>
+        <div className="fixed top-0 w-full bg-white">
+          <NavbarComponent />
+        </div>
+        <div className="w-full flex justify-center items-center mt-7">
+          <Routes>
+            <Route path="*" element={<ErrorPage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+          </Routes>
+        </div>
         <FooterComponent />
       </div>
     </BrowserRouter>

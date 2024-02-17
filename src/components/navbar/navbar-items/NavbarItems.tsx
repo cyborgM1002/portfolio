@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CapitalizeFirstLetter } from "../../../utils/text-capitalizer/TextCapitalizer";
+import { CapitalizeFirstLetter } from "../../../utils/TextCapitalizer";
 import { GrHomeRounded } from "react-icons/gr";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { SiOpenproject } from "react-icons/si";
