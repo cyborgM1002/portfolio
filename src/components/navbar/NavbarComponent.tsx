@@ -26,7 +26,7 @@ const NavbarComponent = () => {
           <PiBugDroidFill />
         </div>
         <div
-          className={`flex flex-col justify-center items-center gap-5 md:hidden rounded-br-[50px] bg-[rgb(1,134,115)] absolute top-12 left-0 rounded duration-500 py-3 ${
+          className={`flex flex-col justify-center items-center gap-5 md:hidden rounded-br-3xl bg-[rgb(1,134,115)] absolute top-12 left-0 duration-500 py-4 px-3 ${
             showMobileNavbar ? "w-0 -left-10" : "w-1/5"
           }`}
         >
@@ -36,9 +36,7 @@ const NavbarComponent = () => {
                 key={index}
                 className="flex flex-col gap-2 justify-center items-center"
               >
-                <div className="text-3xl font-bold text-white">
-                  <MobileNavbarItems title={title} />
-                </div>
+                <MobileNavbarItems title={title} />
                 <span className="text-xs text-white">
                   {CapitalizeFirstLetter(title)}
                 </span>
