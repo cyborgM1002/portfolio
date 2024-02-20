@@ -1,63 +1,55 @@
-import { Footer } from "flowbite-react";
-import {
-  BsDribbble,
-  BsFacebook,
-  BsGithub,
-  BsInstagram,
-  BsTwitter,
-} from "react-icons/bs";
+import LogoIcon from "../logo-component/LogoIcon";
+import { ImLinkedin } from "react-icons/im";
+import { ImGithub } from "react-icons/im";
+import { SiMaildotcom } from "react-icons/si";
+import { ImWhatsapp } from "react-icons/im";
 
 function FooterComponent() {
   return (
-    <Footer container>
-      <div className="w-full">
-        <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-          <div className="flex justify-center items-center">
-            <button className="mr-3 pt-1.5 w-12 h-12 rounded-full bg-g whitespace-nowrap text-3xl font-semibold text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-              CB
-            </button>
-            <span className="text-3xl pt-1.5 font-semibold">CodeBugg</span>{" "}
-          </div>
-
-          <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
-             <div>
-              <Footer.LinkGroup col>
-                <Footer.Link href="/" >Home</Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-            <div>
-              <Footer.LinkGroup col>
-                <Footer.Link href="/about">About</Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-            <div>
-              <Footer.LinkGroup col>
-                <Footer.Link href="/contact">Contact</Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-            <div>
-              <Footer.LinkGroup col>
-                <Footer.Link href="projects">Projects</Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-          </div>
-        </div>
-        <Footer.Divider />
-        <div className="w-full sm:flex sm:items-center sm:justify-between">
-          <Footer.Copyright href="#" by="CodeBugg™" year={2024} />
-          <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-            <Footer.Icon href="#" icon={BsFacebook} />
-            <Footer.Icon href="#" icon={BsInstagram} />
-            <Footer.Icon href="#" icon={BsTwitter} />
-            <Footer.Icon
-              href="https://github.com/cyborgM1002"
-              icon={BsGithub}
-            />
-            <Footer.Icon href="#" icon={BsDribbble} />
-          </div>
+    <div className="w-full py-5">
+      <hr className="my-3 border-gray-200 sm:mx-auto dark:border-gray-400" />
+      <div className="sm:flex px-10 sm:items-center sm:justify-between">
+        <LogoIcon />
+        <div className="flex flex-wrap items-center text-lg font-medium text-gray-600">
+          <a
+            href="https://github.com/cyborgM1002"
+            target="_blank"
+            className="hover:underline me-4 md:me-6"
+          >
+            <ImGithub />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/manish-kumar-2b4924200/"
+            target="_blank"
+            className="hover:underline me-4 md:me-6"
+          >
+            <ImLinkedin />
+          </a>
+          <a
+            href="https://echobuggm@gmail.com"
+            target="_blank"
+            className="hover:underline me-4 md:me-6"
+          >
+            <SiMaildotcom />
+          </a>
+          <a
+            href="https://wa.me/9058314973"
+            target="_blank"
+            className="hover:underline"
+          >
+            <ImWhatsapp />
+          </a>
         </div>
       </div>
-    </Footer>
+      <hr className="my-6 w-11/12 border-gray-200 sm:mx-auto dark:border-gray-300" />
+      <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
+        © 2024{" "}
+        <a href="/" className="hover:underline">
+          BUGG™
+        </a>
+        . All Rights Reserved.
+      </span>
+    </div>
   );
 }
 
