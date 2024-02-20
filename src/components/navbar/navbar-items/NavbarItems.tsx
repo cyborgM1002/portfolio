@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CapitalizeFirstLetter } from "../../../utils/utils";
+import { CapitalizeAllLetter } from "../../../utils/utils";
 import ProjectsIcon from "/icons/ProjectsIcon.png";
 import ExperienceIcon from "/icons/ExperienceIcon.png";
 import SkillIcon from "/icons/SkillIcon.png";
@@ -9,7 +9,7 @@ function NavbarIcon(value: string) {
   switch (value) {
     case "home":
       return HomeIcon;
-    case "skill":
+    case "skills":
       return SkillIcon;
     case "experience":
       return ExperienceIcon;
@@ -24,7 +24,7 @@ const NavbarItems = ({ title }: { title: string }) => {
       className="hover:text-[rgb(0,223,192)]"
       to={title === "home" ? "/" : title}
     >
-      {CapitalizeFirstLetter(title)}
+      {CapitalizeAllLetter(title)}
     </Link>
   );
 };

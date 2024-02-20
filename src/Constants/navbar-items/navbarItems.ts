@@ -3,7 +3,7 @@ export const menuItems = [
     title: "home",
   },
   {
-    title: "skill",
+    title: "skills",
   },
   {
     title: "experience",
