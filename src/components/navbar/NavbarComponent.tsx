@@ -3,6 +3,8 @@ import { menuItems } from "../../Constants/navbar-items/navbarItems";
 import { CapitalizeFirstLetter } from "../../utils/utils";
 import NavbarItems, { MobileNavbarItems } from "./navbar-items/NavbarItems";
 import { PiBugDroidFill } from "react-icons/pi";
+import LogoIcon from "../logo-component/LogoIcon";
+
 const NavbarComponent = () => {
   const [showMobileNavbar, setShowMobileNavbar] = useState<boolean>(false);
   return (

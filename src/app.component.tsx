@@ -11,7 +11,7 @@ function RootComponent() {
   return (
     <BrowserRouter>
       <div className="font-mono w-full min-h-screen">
-        <div className="fixed top-0 w-full bg-white">
+        <div className="fixed top-0 w-full bg-white z-50">
           <NavbarComponent />
         </div>
         <div className="w-full flex justify-center items-center mt-7">

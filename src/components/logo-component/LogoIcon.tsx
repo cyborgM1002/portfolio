@@ -9,7 +9,7 @@ const LogoIcon = () => {
           <img src={bug} />
         </div>
         <span className="md:text-3xl text-xl hover:animate-pulse md:pt-1.5 pt-1 font-semibold">
-          BUGS
+          BUGG
         </span>
       </Link>
     </div>
