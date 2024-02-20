@@ -1,6 +1,7 @@
 import { GitHubRepos } from "../ProjectsPage";
 import web_card from "../../../../public/web_ard.jpg";
 import { CapitalizeFirstLetter } from "../../../utils/utils";
+
 const ProjectItems = ({
   name,
   githubUrl,
