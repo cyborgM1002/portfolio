@@ -9,7 +9,7 @@ const RingMaker = ({
 }: RingMakerType & React.ComponentPropsWithoutRef<"div">) => {
   return (
     <div
-      className={`w-${width} h-${width} bg-[rgb(0,223,192)] rounded-full`}
+      className={`w-${width} h-${width} bg-[rgb(0,223,192)] animate-pulse rounded-full`}
       {...props}
     ></div>
   );
