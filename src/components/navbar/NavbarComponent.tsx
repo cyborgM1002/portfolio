@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { menuItems } from "../../Constants/navbar-items/navbarItems";
-import { CapitalizeFirstLetter } from "../../utils/utils";
+import { CapitalizeAllLetter } from "../../utils/utils";
 import NavbarItems, { MobileNavbarItems } from "./navbar-items/NavbarItems";
 import { PiBugDroidFill } from "react-icons/pi";
 import LogoIcon from "../logo-component/LogoIcon";
@@ -39,7 +39,7 @@ const NavbarComponent = () => {
               >
                 <MobileNavbarItems title={title} />
                 <span className="text-xs text-white">
-                  {CapitalizeFirstLetter(title)}
+                  {CapitalizeAllLetter(title)}
                 </span>
               </div>
             );
