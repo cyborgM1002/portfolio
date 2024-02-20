@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CapitalizeFirstLetter } from "../../../utils/TextCapitalizer";
+import { CapitalizeFirstLetter } from "../../../utils/utils";
 import ProjectsIcon from "/icons/ProjectsIcon.png";
 import ExperienceIcon from "/icons/ExperienceIcon.png";
 import SkillIcon from "/icons/SkillIcon.png";
