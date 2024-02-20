@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { menuItems } from "../../Constants/navbar-items/navbarItems";
-import { CapitalizeFirstLetter } from "../../utils/TextCapitalizer";
+import { CapitalizeFirstLetter } from "../../utils/utils";
 import LogoIcon from "../logo-component/LogoIcon";
 import NavbarItems, { MobileNavbarItems } from "./navbar-items/NavbarItems";
 import { PiBugDroidFill } from "react-icons/pi";
