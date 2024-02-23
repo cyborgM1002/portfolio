@@ -1,8 +1,6 @@
 import axios from "axios";
-import { GITHUB_URL } from "../env";
+import { GITHUB_REPO_URL } from "../env";
 
 export default async function getGitHubRepos() {
-  return await axios.get(GITHUB_URL).then((res) => {
-    return res;
-  });
+  return await axios.get(GITHUB_REPO_URL).then((res) => res);
 }
