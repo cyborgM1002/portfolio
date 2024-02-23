@@ -1,17 +1,13 @@
-import { USER_SUMMARY } from "../env";
+import axios from "axios";
+import { GITHUB_URL, USER_SUMMARY } from "../env";
 
 export default async function userSummary() {
-  const UserSummary = await new Promise((resolve) => {
-    setTimeout(() => {
-      const response: {
-        success: boolean;
-        summary: string;
-      } = {
-        success: true,
-        summary: USER_SUMMARY,
-      };
-      return resolve(response);
-    }, 1500);
-  });
-  return UserSummary;
+  return await axios.get(GITHUB_URL).then((function (response) {
+    const newResponse = {
+      summary: USER_SUMMARY,
+      status: response.status,
+      response
+    }
+    return newResponse
+  }))
 }

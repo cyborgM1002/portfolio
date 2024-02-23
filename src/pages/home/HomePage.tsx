@@ -1,41 +1,37 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import userSummary from "../../api/getUserSummary";
-import RingMaker from "../../components/ring-maker/RingMaker";
 import Wallpaper1 from "/icons/Wallpaper1.svg";
 
 const HomePage = () => {
   const [summary, setSummary] = useState("");
   const [loading, setLoading] = useState(true);
   const totalRings = [];
-  for (let i = 1; i <= 40; i++) {
+  for (let i = 1; i <= 10; i++) {
     const top = Math.round(Math.random() * 90);
     const left = Math.round(Math.random() * 90);
-    const width = Math.round(Math.random() * 10 + 1);
+    const width = Math.floor(Math.random() * 10 + 1);
     totalRings.push({ top, left, width });
   }
 
-  const getUserSummary = () => {
+  const getUserSummary = async () => {
     try {
-      userSummary()
-        .then((res:any) => {
-          const { success, summary }: { success: boolean; summary: string } =
-            res;
-          if (success) {
-            setSummary(summary);
-            setLoading(!success);
-          } else {
-            alert("No user summary found");
-            setLoading(!success);
-          }
-        })
-        .catch((error) => {
-          setLoading(true);
-          console.error(error);
-        });
+      const res = await userSummary();
+      const { response, status, summary } = res;
+      if (status === 200) {
+        console.log(response);
+        setSummary(summary);
+        setLoading(false);
+      } else {
+        alert("No user summary found");
+        setLoading(false);
+      }
     } catch (error) {
       setLoading(true);
       console.error(error);
+    } finally {
+      setLoading(false);
+      console.log("Summary fetched successfully");
     }
   };
 
@@ -55,9 +51,8 @@ const HomePage = () => {
                 top: `${top}%`,
                 left: `${left}%`,
               }}
-            >
-              <RingMaker width={width} />
-            </div>
+              className={`w-${width} h-${width} bg-[rgb(0,223,192)] animate-pulse rounded-full`}
+            ></div>
           );
         })}
       </div>
