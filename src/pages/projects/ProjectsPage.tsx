@@ -52,6 +52,8 @@ const ProjectsPage = () => {
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      console.log("Summary fetched successfully");
     }
   }
 
