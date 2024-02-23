@@ -19,42 +19,37 @@ const ProjectsPage = () => {
     getAllGitHubRepos();
   }, []);
 
-  function getAllGitHubRepos() {
+  async function getAllGitHubRepos() {
     try {
-      getGitHubRepos()
-        .then((res) => {
-          const { data, status } = res;
-          if (status == 200) {
-            const newRepos: GitHubRepos[] = [];
-            data?.map(
-              ({
-                name,
-                svn_url,
-                html_url,
-                language,
-                created_at,
-                updated_at,
-                description,
-              }: GitHubRepos) => {
-                const newData = {
-                  name,
-                  githubUrl: html_url ?? svn_url ?? "",
-                  language,
-                  created_at,
-                  updated_at,
-                  description,
-                };
-                newRepos.push(newData);
-              }
-            );
-            setGitHubRepos(newRepos);
-          } else {
-            console.error("error");
+      const res = await getGitHubRepos();
+      const { data, status } = res;
+      if (status == 200) {
+        const newRepos: GitHubRepos[] = [];
+        data?.map(
+          ({
+            name,
+            svn_url,
+            html_url,
+            language,
+            created_at,
+            updated_at,
+            description,
+          }: GitHubRepos) => {
+            const newData = {
+              name,
+              githubUrl: html_url ?? svn_url ?? "",
+              language,
+              created_at,
+              updated_at,
+              description,
+            };
+            newRepos.push(newData);
           }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+        );
+        setGitHubRepos(newRepos);
+      } else {
+        console.error("error");
+      }
     } catch (error) {
       console.error(error);
     }
