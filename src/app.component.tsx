@@ -6,6 +6,7 @@ import NavbarComponent from "./components/navbar/NavbarComponent";
 import ErrorPage from "./components/error-page/ErrorPage";
 import ExperiencePage from "./pages/experience-page/ExperiencePage";
 import SkillsPage from "./pages/skills-page/SkillsPage";
+import { Toaster } from "react-hot-toast";
 
 function RootComponent() {
   return (
@@ -23,6 +24,7 @@ function RootComponent() {
             <Route path="/projects" element={<ProjectsPage />} />
           </Routes>
         </div>
+        <Toaster position="top-center" reverseOrder={true} />
         <FooterComponent />
       </div>
     </BrowserRouter>
