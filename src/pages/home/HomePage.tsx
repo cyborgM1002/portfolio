@@ -1,65 +1,25 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from "react";
-import userSummary from "../../api/getUserSummary";
-import RingMaker from "../../components/ring-maker/RingMaker";
 import Wallpaper1 from "/icons/Wallpaper1.svg";
+import { ReturnCss } from "../../utils/utils";
+import Bubbles from "../../components/bubble-maker/Bubbles";
+import useUserSummary from "../../api/getUserSummary";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const HomePage = () => {
-  const [summary, setSummary] = useState("");
-  const [loading, setLoading] = useState(true);
-  const totalRings = [];
-  for (let i = 1; i <= 40; i++) {
-    const top = Math.round(Math.random() * 90);
-    const left = Math.round(Math.random() * 90);
-    const width = Math.round(Math.random() * 10 + 1);
-    totalRings.push({ top, left, width });
-  }
-
-  const getUserSummary = () => {
-    try {
-      userSummary()
-        .then((res:any) => {
-          const { success, summary }: { success: boolean; summary: string } =
-            res;
-          if (success) {
-            setSummary(summary);
-            setLoading(!success);
-          } else {
-            alert("No user summary found");
-            setLoading(!success);
-          }
-        })
-        .catch((error) => {
-          setLoading(true);
-          console.error(error);
-        });
-    } catch (error) {
-      setLoading(true);
-      console.error(error);
-    }
-  };
-
+  const { loading, intro, setLoading } = useUserSummary();
+  const location = useLocation();
   useEffect(() => {
-    getUserSummary();
-  }, []);
+    window.onload = function () {
+      setLoading(true);
+      // setIntro({ bio: "", summary: "", name: "" });
+    };
+  }, [location.pathname]);
 
   return (
     <div className="w-full h-screen flex justify-center items-center gap-3 relative">
       <div className="w-full h-screen flex  absolute">
-        {totalRings?.map(({ top, left, width }, index) => {
-          return (
-            <div
-              key={index}
-              style={{
-                position: "absolute",
-                top: `${top}%`,
-                left: `${left}%`,
-              }}
-            >
-              <RingMaker width={width} />
-            </div>
-          );
-        })}
+        <Bubbles />
       </div>
       <div className="w-full px-5 z-0 flex justify-center items-center gap-5">
         <div
@@ -68,28 +28,32 @@ const HomePage = () => {
           } duration-500 flex flex-col justify-center items-center gap-10`}
         >
           <img
-            className={`flex justify-center duration-500 items-center border-[10px] border-[rgb(1,134,115,0.6)] rounded-full ${
-              loading ? "w-1/4 h-1/4" : "w-3/4 h-3/4"
-            } `}
+            className={`flex justify-center duration-500 items-center border-[10px] border-[rgb(1,134,115,0.6)] rounded-full ${ReturnCss(
+              {
+                condition: loading,
+                trueValue: "w-1/4 h-1/4",
+                falseValue: "w-3/5 h-3/5",
+              }
+            )} `}
             src={Wallpaper1}
-            alt=""
+            alt="Yoga Image"
           />
           <div className="text-3xl subpixel-antialiased text-gray-700">
-            {loading ? "Connecting to DB..." : "Connected to DB..."}
+            {ReturnCss({
+              condition: loading,
+              trueValue: "Connecting to DB...",
+              falseValue: "Connected to DB...",
+            })}
           </div>
         </div>
         <div
-          className={`${
-            loading ? "" : "w-3/5 h-4/5"
-          } duration-500 p-5 flex items-center justify-center`}
+          className={`${ReturnCss({
+            condition: loading,
+            trueValue: "hidden",
+            falseValue: "w-3/5 h-1/2",
+          })} duration-500 text-xl subpixel-antialiased text-gray-700 p-10`}
         >
-          <div
-            className={`${
-              loading ? "hidden" : "w-3/4"
-            } text-2xl text-center bg-white subpixel-antialiased text-gray-700 p-10 border-2 border-[rgba(1,134,115,0.8)] rounded-xl`}
-          >
-            {summary}
-          </div>
+          {intro?.bio}
         </div>
       </div>
     </div>
@@ -97,5 +61,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-// bg-gradient-to-r from-blue-500 via-pink-300 to-blue-500
-// "rgb(1,134,115)"
