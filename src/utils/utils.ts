@@ -8,7 +8,7 @@ export function CapitalizeAllLetter(value: string) {
   return value.toUpperCase();
 }
 
-export function ReturnCss({
+export function ReturnProperty({
   condition,
   trueValue,
   falseValue,
