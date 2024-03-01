@@ -16,8 +16,11 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getUserSummary();
-  }, []);
+    window.onload = function () {
+      setLoading(true);
+      // setIntro({ bio: "", summary: "", name: "" });
+    };
+  }, [location.pathname]);
 
   async function getUserSummary() {
     try {
