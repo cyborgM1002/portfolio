@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Wallpaper1 from "/icons/Wallpaper1.svg";
 import { Notify, ReturnProperty } from "../../utils/utils";
-import Bubbles from "../../components/bubble-maker/Bubbles";
 import { useEffect, useState } from "react";
 import { IntroType } from "../../types/types";
 import { GITHUB_API_URL, USER_SUMMARY } from "../../env";
@@ -44,10 +43,8 @@ const HomePage = () => {
 
 
   return (
-    <div className="w-full h-screen flex justify-center items-center gap-3 relative">
-      <div className="w-full h-screen flex blur-sm absolute">
-        <Bubbles />
-      </div>
+    <div className="w-full h-screen flex justify-center items-center gap-3">
+
       <div className="w-full h-screen px-5 z-0 flex justify-center items-center gap-5">
         <div
           className={`
