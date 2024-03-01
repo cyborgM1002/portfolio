@@ -1,5 +1,5 @@
 import { GitHubRepos } from "../ProjectsPage";
-import web_card from "/web_ard.jpg";
+import web_card from "/images/web_ard.jpg";
 import { CapitalizeFirstLetter } from "../../../utils/utils";
 
 const ProjectItems = ({
@@ -14,7 +14,7 @@ const ProjectItems = ({
     window.open(url, "_blank");
   };
   return (
-    <div className="h-full border border-gray-400 rounded-lg dark:border-gray-500">
+    <div className="h-full bg-white shadow shadow-neutral-500 border border-gray-400 rounded-lg dark:border-gray-500">
       <div className="flex w-full h-1/2 rounded-lg justify-center items-center border border-gray-300 mb-3">
         <img
           className="object-fill w-full h-full rounded-lg"
@@ -22,7 +22,6 @@ const ProjectItems = ({
           alt="Failed to load image"
         />
       </div>
-
       <div className="px-3 p-5 w-full h-1/2 flex flex-col gap-5 justify-center items-center">
         <div className="text-gray-700 text-2xl font-semibold">
           {CapitalizeFirstLetter(name)}

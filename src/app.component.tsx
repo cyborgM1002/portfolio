@@ -7,6 +7,7 @@ import ErrorPage from "./components/error-page/ErrorPage";
 import ExperiencePage from "./pages/experience-page/ExperiencePage";
 import SkillsPage from "./pages/skills-page/SkillsPage";
 import { Toaster } from "react-hot-toast";
+import Bubbles from "./components/bubble-maker/Bubbles";
 
 function RootComponent() {
   return (
@@ -15,7 +16,10 @@ function RootComponent() {
         <div className="fixed top-0 w-full bg-white z-50">
           <NavbarComponent />
         </div>
-        <div className="w-full flex justify-center items-center mt-7">
+        <div className="w-full flex justify-center items-center mt-7 relative">
+          <div className="w-full h-screen flex blur-sm absolute">
+            <Bubbles />
+          </div>
           <Routes>
             <Route path="*" element={<ErrorPage />} />
             <Route path="/" element={<HomePage />} />
