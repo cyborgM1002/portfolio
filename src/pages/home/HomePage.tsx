@@ -9,7 +9,7 @@ import {
   userSummary,
   Wallpaper1,
   ImageCard,
-} from "..";
+} from "../index";
 
 const HomePage = () => {
   const [intro, setIntro] = useState<IntroType>();

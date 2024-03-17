@@ -1,4 +1,4 @@
-import { PageUnderDevelopment } from "..";
+import { PageUnderDevelopment } from "../index";
 
 const ExperiencePage = () => {
   return (

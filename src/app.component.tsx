@@ -5,8 +5,13 @@ import {
   ErrorPage,
   FooterComponent,
   NavbarComponent,
-} from "./components";
-import { ExperiencePage, HomePage, ProjectsPage, SkillsPage } from "./pages";
+} from "./components/index";
+import {
+  ExperiencePage,
+  HomePage,
+  ProjectsPage,
+  SkillsPage,
+} from "./pages/index";
 
 function RootComponent() {
   return (

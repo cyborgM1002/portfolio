@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ProjectItems from "./project-items/ProjectItems";
+import { getGitHubRepos } from "../index";
 import { GitHubRepos } from "../../types/types";
-import { getGitHubRepos } from "..";
 
 const ProjectsPage = () => {
   const [gitHubRepos, setGitHubRepos] = useState<GitHubRepos[]>([]);
