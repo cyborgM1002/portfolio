@@ -1,13 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/home/HomePage";
-import ProjectsPage from "./pages/projects/ProjectsPage";
-import FooterComponent from "./components/footer/FooterComponent";
-import NavbarComponent from "./components/navbar/NavbarComponent";
-import ErrorPage from "./components/error-page/ErrorPage";
-import ExperiencePage from "./pages/experience-page/ExperiencePage";
-import SkillsPage from "./pages/skills-page/SkillsPage";
 import { Toaster } from "react-hot-toast";
-import Bubbles from "./components/bubble-maker/Bubbles";
+import {
+  Bubbles,
+  ErrorPage,
+  FooterComponent,
+  NavbarComponent,
+} from "./components";
+import { ExperiencePage, HomePage, ProjectsPage, SkillsPage } from "./pages";
 
 function RootComponent() {
   return (

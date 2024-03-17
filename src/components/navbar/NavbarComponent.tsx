@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { menuItems } from "../../Constants/navbar-items/navbarItems";
-import { CapitalizeAllLetter } from "../../utils/utils";
 import NavbarItems, { MobileNavbarItems } from "./navbar-items/NavbarItems";
 import { PiBugDroidFill } from "react-icons/pi";
-import LogoIcon from "../logo-component/LogoIcon";
+import { CapitalizeAllLetter, LogoIcon, menuItems } from "..";
 
 const NavbarComponent = () => {
   const [showMobileNavbar, setShowMobileNavbar] = useState<boolean>(false);

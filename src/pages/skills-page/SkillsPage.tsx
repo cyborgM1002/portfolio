@@ -1,4 +1,4 @@
-import { PageUnderDevelopment } from "../../components/error-page/ErrorPage";
+import { PageUnderDevelopment } from "..";
 
 const SkillsPage = () => {
   return (
@@ -6,6 +6,6 @@ const SkillsPage = () => {
       <PageUnderDevelopment />
     </main>
   );
-}
+};
 
 export default SkillsPage;

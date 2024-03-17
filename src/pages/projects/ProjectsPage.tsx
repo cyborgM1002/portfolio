@@ -1,17 +1,7 @@
 import { useEffect, useState } from "react";
-import getGitHubRepos from "../../api/getGitHubRepos";
 import ProjectItems from "./project-items/ProjectItems";
-
-export type GitHubRepos = {
-  name: string;
-  description: string;
-  githubUrl: string;
-  language: string;
-  created_at: string;
-  updated_at: string;
-  svn_url?: string;
-  html_url?: string;
-};
+import { GitHubRepos } from "../../types/types";
+import { getGitHubRepos } from "..";
 
 const ProjectsPage = () => {
   const [gitHubRepos, setGitHubRepos] = useState<GitHubRepos[]>([]);
