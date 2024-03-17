@@ -1,6 +1,5 @@
-import { GitHubRepos } from "../ProjectsPage";
-import web_card from "/images/web_ard.jpg";
-import { CapitalizeFirstLetter } from "../../../utils/utils";
+import { CapitalizeFirstLetter, web_card } from "../..";
+import { GitHubRepos } from "../../../types/types";
 
 const ProjectItems = ({
   name,

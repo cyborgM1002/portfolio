@@ -1,4 +1,4 @@
-import { PageUnderDevelopment } from "../../components/error-page/ErrorPage";
+import { PageUnderDevelopment } from "..";
 
 const ExperiencePage = () => {
   return (
@@ -6,6 +6,6 @@ const ExperiencePage = () => {
       <PageUnderDevelopment />
     </main>
   );
-}
+};
 
 export default ExperiencePage;
