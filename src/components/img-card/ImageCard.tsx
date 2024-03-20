@@ -1,4 +1,4 @@
-import { gitHubUrl, profile } from "..";
+import { GITHUB_URL, profile } from "../index";
 import { IntroType } from "../../types/types";
 
 function ImageCard({ bio, name, summary }: IntroType) {
@@ -15,7 +15,7 @@ function ImageCard({ bio, name, summary }: IntroType) {
         <p className="mt-2 text-sm text-gray-300">{bio}</p>
         <p className="mt-2 text-xs text-gray-400">{summary}</p>
         <a
-          href={gitHubUrl}
+          href={GITHUB_URL}
           className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white"
         >
           View GitHub Profile &rarr;

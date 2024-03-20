@@ -1,28 +1,28 @@
-import { PageUnderDevelopment, ImageCard } from "../components";
-import getGitHubRepos from "../api/getGitHubRepos";
 import web_card from "/images/web_ard.jpg";
 import { CapitalizeFirstLetter } from "../utils/utils";
-import { gitHubApiUrl, userSummary } from "../utils/environmentUtils";
 import Wallpaper1 from "/icons/Wallpaper1.svg";
 import { Notify, ReturnProperty } from "../utils/utils";
 import SkillsPage from "./skills-page/SkillsPage";
 import ProjectsPage from "./projects/ProjectsPage";
 import HomePage from "./home/HomePage";
 import ExperiencePage from "./experience-page/ExperiencePage";
-
+import ImageCard from "../components/img-card/ImageCard";
+import ErrorPage, {
+  PageUnderDevelopment,
+} from "../components/error-page/ErrorPage";
+import { GITHUB_API_REPO_URL } from "../env";
 export {
   web_card,
   Wallpaper1,
-  userSummary,
-  gitHubApiUrl,
+  GITHUB_API_REPO_URL,
   Notify,
   HomePage,
+  ErrorPage,
   ImageCard,
   SkillsPage,
   ProjectsPage,
-  ExperiencePage,
-  getGitHubRepos,
   ReturnProperty,
+  ExperiencePage,
   CapitalizeFirstLetter,
   PageUnderDevelopment,
 };

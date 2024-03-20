@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import ProjectItems from "./project-items/ProjectItems";
-import { getGitHubRepos } from "../index";
 import { GitHubRepos } from "../../types/types";
-
+import axios from "axios";
+import { GITHUB_API_REPO_URL } from "../index";
 const ProjectsPage = () => {
   const [gitHubRepos, setGitHubRepos] = useState<GitHubRepos[]>([]);
   useEffect(() => {
@@ -10,36 +10,39 @@ const ProjectsPage = () => {
   }, []);
 
   async function getAllGitHubRepos() {
+    console.log("GITHUB_API_REPO_URL", GITHUB_API_REPO_URL);
     try {
-      const res = await getGitHubRepos();
-      const { data, status } = res;
-      if (status == 200) {
-        const newRepos: GitHubRepos[] = [];
-        data?.map(
-          ({
-            name,
-            svn_url,
-            html_url,
-            language,
-            created_at,
-            updated_at,
-            description,
-          }: GitHubRepos) => {
-            const newData = {
-              name,
-              githubUrl: html_url ?? svn_url ?? "",
-              language,
-              created_at,
-              updated_at,
-              description,
-            };
-            newRepos.push(newData);
-          }
-        );
-        setGitHubRepos(newRepos);
-      } else {
-        console.error("error");
-      }
+      const response = await axios.get(GITHUB_API_REPO_URL);
+      console.log("response", response?.data);
+
+      // const { data, status } = res;
+      // if (status == 200) {
+      //   const newRepos: GitHubRepos[] = [];
+      //   data?.map(
+      //     ({
+      //       name,
+      //       svn_url,
+      //       html_url,
+      //       language,
+      //       created_at,
+      //       updated_at,
+      //       description,
+      //     }: GitHubRepos) => {
+      //       const newData = {
+      //         name,
+      //         githubUrl: html_url ?? svn_url ?? "",
+      //         language,
+      //         created_at,
+      //         updated_at,
+      //         description,
+      //       };
+      //       newRepos.push(newData);
+      //     }
+      //   );
+      //   setGitHubRepos(newRepos);
+      // } else {
+      //   console.error("error");
+      // }
     } catch (error) {
       console.error(error);
     } finally {
