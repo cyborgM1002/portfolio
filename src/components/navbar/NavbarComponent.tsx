@@ -1,12 +1,7 @@
 import { useState } from "react";
 import { PiBugDroidFill } from "react-icons/pi";
-import {
-  CapitalizeAllLetter,
-  LogoIcon,
-  menuItems,
-  NavbarItems,
-  MobileNavbarItems,
-} from "../index";
+import { CapitalizeAllLetter, LogoIcon, menuItems } from "../index";
+import NavbarItems, { MobileNavbarItems } from "./navbar-items/NavbarItems";
 
 const NavbarComponent = () => {
   const [showMobileNavbar, setShowMobileNavbar] = useState<boolean>(false);

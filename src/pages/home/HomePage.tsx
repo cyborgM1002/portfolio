@@ -1,54 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { useEffect, useState } from "react";
-import { IntroType } from "../../types/types";
-import {
-  Notify,
-  ReturnProperty,
-  gitHubApiUrl,
-  userSummary,
-  Wallpaper1,
-  ImageCard,
-} from "../index";
+import { ReturnProperty, Wallpaper1, ImageCard } from "../index";
+import useUserSummary from "../../hooks/useUserSummary";
 
 const HomePage = () => {
-  const [intro, setIntro] = useState<IntroType>();
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    window.onload = function () {
-      setLoading(true);
-      // setIntro({ bio: "", summary: "", name: "" });
-    };
-  }, [location.pathname]);
-
-  async function getUserSummary() {
-    try {
-      setLoading(true);
-      const data = await fetch(gitHubApiUrl);
-      const response = await data.json();
-
-      if (response) {
-        setIntro({
-          bio: response?.bio,
-          summary: userSummary,
-          name: response?.name,
-        });
-        setTimeout(() => {
-          setLoading(false);
-          Notify({ type: "success", message: "Summary fetched" });
-        }, 1500);
-      } else {
-        Notify({ type: "error", message: "Summary not found!" });
-        setLoading(true);
-      }
-    } catch (error: any) {
-      setLoading(true);
-      Notify({ type: "error", message: error?.message });
-    } finally {
-      Notify({ type: "loading", message: "loading..." });
-    }
-  }
+  const { intro, loading } = useUserSummary();
+  console.log("intro", intro);
 
   return (
     <div className="w-full h-screen flex justify-center items-center gap-3">
