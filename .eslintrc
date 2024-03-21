@@ -1,0 +1,52 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "plugin:jsx-a11y/recommended",
+        "plugin:prettier/recommended"
+    ],
+    "plugins": [
+        "@typescript-eslint",
+        "react",
+        "import",
+        "jsx-a11y",
+        "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2021,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "project": "./tsconfig.json" // Path to your tsconfig.json file
+    },
+    "rules": {
+        "prettier/prettier": "error", // Enforce Prettier formatting
+        "react/prop-types": "off", // Disable prop-types check for functional components
+        "react/react-in-jsx-scope": "off", // Disable React import in JSX for Next.js projects
+        "@typescript-eslint/explicit-module-boundary-types": "off", // Disable explicit return types for functions
+        "no-console": "warn", // Warn about console.log and console.error usage
+        "no-unused-vars": "warn", // Warn about unused variables
+        "max-len": [
+            "error",
+            {
+                "code": 80
+            }
+        ], // Enforce a maximum line length of 80 characters
+        "indent": [
+            "error",
+            2
+        ], // Enforce 2-space indentation
+        "quotes": [
+            "error",
+            "single"
+        ], // Enforce single quotes for string literals
+        "comma-dangle": [
+            "error",
+            "always-multiline"
+        ] // Enforce trailing comma in multiline object literals and arrays
+      // Add more project-specific rules here
+    }
+}
