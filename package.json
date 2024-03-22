@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "this is portfolio app using create-single-spa",
   "scripts": {
+    "start-all": "concurrently \"cd packages/portfolio-container && yarn start\" \"cd packages/portfolio-main && yarn start\" \"cd packages/react-mini-projects && yarn start\" \"cd packages/vue-mini-projects && yarn start\"",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write ."
@@ -12,6 +13,7 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
