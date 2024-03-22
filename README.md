@@ -30,7 +30,7 @@ Welcome to my portfolio website showcasing various projects built using micro fr
 
 ## Usage
 
-1. Clone the repository: `git clone https://github.com/your-username/portfolio.git`
+1. Clone the repository: `git clone https://github.com/bugg-m/portfolio.git`
 2. Navigate to the respective micro frontend directory.
 3. Install dependencies: `npm install` or `yarn install`
 4. Start the development server: `npm start` or `yarn start`

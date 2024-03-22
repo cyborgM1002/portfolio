@@ -1,8 +1,8 @@
-import { merge } from "webpack-merge";
-import singleSpaDefaults from "webpack-config-single-spa-react-ts";
-import HtmlWebpackPlugin from "html-webpack-plugin";
+const { merge } = require("webpack-merge");
+const singleSpaDefaults = require("webpack-config-single-spa-react-ts");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
-export default (webpackConfigEnv, argv) => {
+module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
     orgName: "buggOrg",
     projectName: "react-apps",
@@ -11,6 +11,14 @@ export default (webpackConfigEnv, argv) => {
   });
 
   return merge(defaultConfig, {
+    // Add or modify webpack configurations here
+    plugins: [
+      new ForkTsCheckerWebpackPlugin({
+        typescript: {
+          memoryLimit: 4096,
+        },
+      }),
+    ],
     // Optional: Configure devServer for local development
     devServer: {
       port: 9002, // Adjust port number as needed

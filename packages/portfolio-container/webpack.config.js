@@ -1,8 +1,9 @@
-import { merge } from "webpack-merge";
-import singleSpaDefaults from "webpack-config-single-spa-ts";
-import HtmlWebpackPlugin from "html-webpack-plugin";
+const { merge } = require("webpack-merge");
+const singleSpaDefaults = require("webpack-config-single-spa-ts");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
-export default (webpackConfigEnv, argv) => {
+module.exports = (webpackConfigEnv, argv) => {
   const orgName = "buggOrg";
   const defaultConfig = singleSpaDefaults({
     orgName,
