@@ -16,13 +16,13 @@ Welcome to my portfolio website showcasing various projects built using micro fr
 - Technologies: React, TypeScript
 - GitHub Repository: [portfolio-main](link-to-repo)
 
-### 3. React Mini Projects
+### 3. React Mini Apps
 
 - Description: Collection of small projects built with React.
 - Technologies: React, JavaScript/TypeScript
 - GitHub Repository: [react-mini-projects](link-to-repo)
 
-### 4. Vue.js Mini Projects
+### 4. Vue.js Mini Apps
 
 - Description: Collection of small projects built with Vue.js.
 - Technologies: Vue.js, JavaScript/TypeScript

@@ -1,21 +1,22 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "module": "esnext",
-        "strict": true,
-        "jsx": "react",
-        "esModuleInterop": true,
-        "moduleResolution": "node",
-        "baseUrl": "./",
-        "paths": {
-            "@/*": [
-                "src/*"
-            ]
-        }
-    },
-    "include": [
-        "packages/**/*",
-        "*.ts",
-        "*.tsx"
-    ]
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["packages/**/*", "*.ts", "*.tsx"],
+  "exclude": [
+    "node_modules/**",
+    "packages/vue-mini-apps/**/*",
+    "packages/react-mini-apps/node_modules/**",
+    "packages/portfolio-main/node_modules/**",
+    "packages/portfolio-container/node_modules/**"
+  ]
 }
