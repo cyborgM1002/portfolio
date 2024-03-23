@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "this is portfolio app using create-single-spa",
   "scripts": {
-    "start-all": "concurrently \"cd packages/portfolio-container && yarn start\" \"cd packages/portfolio-main && yarn start\" \"cd packages/react-mini-projects && yarn start\" \"cd packages/vue-mini-projects && yarn start\"",
+    "start-all": "concurrently \"cd packages/portfolio-container && yarn start\" \"cd packages/portfolio-main && yarn start\" \"cd packages/react-mini-apps && yarn start\"  \"cd packages/vue-mini-apps && yarn serve\"",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write ."
@@ -13,17 +13,39 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
+    "@babel/core": "^7.24.3",
+    "@babel/preset-env": "^7.24.3",
+    "@babel/preset-typescript": "^7.24.1",
+    "@types/node": "^20.11.30",
+    "@types/react": "^18.2.69",
+    "@types/react-dom": "^18.2.22",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "babel-loader": "^9.1.3",
     "concurrently": "^8.2.2",
+    "css-loader": "^6.10.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.29.1",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
     "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^3.2.5"
+    "eslint-plugin-vue": "^9.23.0",
+    "prettier": "^3.2.5",
+    "sass": "^1.72.0",
+    "sass-loader": "^14.1.1",
+    "style-loader": "^3.3.4",
+    "typescript": "^5.4.3",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   },
   "dependencies": {
-    "@typescript-eslint/parser": "^7.3.1"
+    "@typescript-eslint/parser": "^7.3.1",
+    "single-spa": "^6.0.1",
+    "single-spa-layout": "^2.2.0"
   }
 }

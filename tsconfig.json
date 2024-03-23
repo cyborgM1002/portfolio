@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "esnext",
+        "strict": true,
+        "jsx": "react",
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "baseUrl": "./",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ]
+        }
+    },
+    "include": [
+        "packages/**/*",
+        "*.ts",
+        "*.tsx"
+    ]
+}

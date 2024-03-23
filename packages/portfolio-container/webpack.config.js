@@ -1,10 +1,9 @@
 const { merge } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa-ts");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 module.exports = (webpackConfigEnv, argv) => {
-  const orgName = "buggOrg";
+  const orgName = "bugg";
   const defaultConfig = singleSpaDefaults({
     orgName,
     projectName: "root-config",
@@ -22,11 +21,6 @@ module.exports = (webpackConfigEnv, argv) => {
         templateParameters: {
           isLocal: webpackConfigEnv && webpackConfigEnv.isLocal,
           orgName,
-        },
-      }),
-      new ForkTsCheckerWebpackPlugin({
-        typescript: {
-          memoryLimit: 4096,
         },
       }),
     ],

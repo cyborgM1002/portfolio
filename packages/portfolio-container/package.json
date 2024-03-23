@@ -1,5 +1,5 @@
 {
-  "name": "@buggOrg/root-config",
+  "name": "@bugg/root-config",
   "scripts": {
     "start": "webpack serve --port 9000 --env isLocal",
     "lint": "eslint src --ext js,ts,tsx",
@@ -7,7 +7,7 @@
     "format": "prettier --write .",
     "check-format": "prettier --check .",
     "prepare": "husky install",
-    "build": "concurrently yarn:build:*",
+    "build": "concurrently npm:build:*",
     "build:webpack": "webpack --mode=production",
     "build:types": "tsc"
   },
@@ -46,5 +46,5 @@
     "@types/webpack-env": "^1.16.2",
     "single-spa-layout": "^1.6.0"
   },
-  "types": "dist/buggOrg-root-config.d.ts"
+  "types": "dist/bugg-root-config.d.ts"
 }

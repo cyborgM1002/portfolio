@@ -1,8 +1,13 @@
 {
   "extends": "ts-config-single-spa",
-  "files": ["src/buggOrg-root-config.ts"],
+  "files": ["src/bugg-root-config.ts"],
   "compilerOptions": {
-    "declarationDir": "dist"
+    "declarationDir": "dist",
+    "jsx": "react-jsx",
+    "target": "ES2020",
+    "module": "esnext",
+    "strict": true,
+    "esModuleInterop": true
   },
   "include": ["src/**/*"],
   "exclude": ["src/**/*.test*"]
