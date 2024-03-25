@@ -1,10 +1,31 @@
 {
   "extends": "ts-config-single-spa",
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "declarationDir": "dist"
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "declarationDir": "dist",
+    "importsNotUsedAsValues": "remove",
+    "esModuleInterop": true,
+    "emitDeclarationOnly": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "baseUrl": "./src/**/*.{js,ts,tsx}",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ]
   },
-  "files": ["src/bugg-main-app.tsx"],
-  "include": ["src/**/*"],
-  "exclude": ["src/**/*.test*"]
+  "allowImportingTsExtensions": true,
+  "files": [
+    "src/bugg-main-app.tsx"
+  ],
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "src/**/*.test*"
+  ]
 }

@@ -2,3 +2,6 @@ node_modules/
 build/
 dist/
 public/
+
+packages/portfolio-main/src/bugg-main-app.ts
+packages/react-mini-apps/src/bugg-react-apps.ts
