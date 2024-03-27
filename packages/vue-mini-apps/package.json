@@ -1,6 +1,7 @@
 {
   "name": "@bugg/vue-mini-apps",
   "version": "0.1.0",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --port 9003",

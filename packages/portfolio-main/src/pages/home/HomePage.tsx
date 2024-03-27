@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ReturnProperty, Wallpaper1, ImageCard } from "../index";
 import useUserSummary from "../../hooks/useUserSummary";
 

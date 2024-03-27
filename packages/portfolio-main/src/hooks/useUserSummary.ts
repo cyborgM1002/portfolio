@@ -35,6 +35,8 @@ const useUserSummary = () => {
     } catch (error) {
       setLoading(true);
       Notify({ type: "error", message: error?.message || "Request not completed" });
+    } finally {
+      Notify({ type: "success", message: "Request completed" });
     }
   }, []);
 

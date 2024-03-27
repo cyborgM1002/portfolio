@@ -1,5 +1,6 @@
 {
   "name": "@bugg/react-apps",
+  "license": "MIT",
   "scripts": {
     "start": "webpack serve --port 9002",
     "start:standalone": "webpack serve --port 9002 --env standalone",

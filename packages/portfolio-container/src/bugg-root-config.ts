@@ -11,16 +11,16 @@ const applications = constructApplications({
 });
 const layoutEngine = constructLayoutEngine({ routes, applications });
 
-registerApplication(
-  "main-app",
-  () => import("../../portfolio-main/src/bugg-main-app"),
-  (location) => location.pathname.startsWith("/main"),
-);
-registerApplication(
-  "react-apps",
-  () => import("../../react-mini-apps/src/bugg-react-apps"),
-  (location) => location.pathname.startsWith("/react"),
-);
+// registerApplication(
+//   "main-app",
+//   () => import("../../portfolio-main/src/bugg-main-app"),
+//   (location) => location.pathname.startsWith("/main"),
+// );
+// registerApplication(
+//   "react-apps",
+//   () => import("../../react-mini-apps/src/bugg-react-apps"),
+//   (location) => location.pathname.startsWith("/react"),
+// );
 
 applications.forEach(registerApplication);
 layoutEngine.activate();

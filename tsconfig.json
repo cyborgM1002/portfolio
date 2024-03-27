@@ -13,6 +13,11 @@
       ]
     }
   },
+  "lib": [
+    "DOM",
+    "DOM.Iterable",
+    "ESNext"
+  ],
   "include": [
     "packages/**/*",
     "*.ts",

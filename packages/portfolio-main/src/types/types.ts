@@ -5,6 +5,7 @@ export type IntroType = {
 };
 
 export type GitHubRepos = {
+  id?: number;
   name: string;
   description: string;
   githubUrl: string;
@@ -13,4 +14,5 @@ export type GitHubRepos = {
   updated_at: string;
   svn_url?: string;
   html_url?: string;
+  clone_url?: string;
 };

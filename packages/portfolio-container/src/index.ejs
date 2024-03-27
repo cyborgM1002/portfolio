@@ -13,10 +13,14 @@
   <script type="systemjs-importmap">
     {
       "imports": {
-        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js"
+        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
+        "@bugg/root-config": "//localhost:9000/bugg-root-config.js",
+        "@bugg/main-app": "http://localhost:9001/bugg-main-app.js"
       }
     }
   </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- <link href="./output.css" rel="stylesheet"> -->
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js" as="script"
     crossorigin="anonymous" />
   <% if (isLocal) { %>
@@ -26,9 +30,7 @@
         "react": "https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js",
         "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js",
         "@bugg/root-config": "//localhost:9000/bugg-root-config.js",
-        "@bugg/main-app": "http://localhost:9001/bugg-main-app.js",
-        "@bugg/react-apps": "http://localhost:9002/bugg-react-apps.js",
-        "@bugg/vue-apps": "http://localhost:9003/js/app.js"
+        "@bugg/main-app": "http://localhost:9001/bugg-main-app.js"
       }
     }
   </script>
