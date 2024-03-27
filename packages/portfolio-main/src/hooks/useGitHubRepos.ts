@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { GitHubRepos } from "../types/types";
 import axios from "axios";
 import { GITHUB_API_REPO_URL } from "../env";
@@ -9,8 +9,7 @@ const useGitHubRepos = () => {
   useEffect(() => {
     getAllGitHubRepos();
   }, []);
-
-  async function getAllGitHubRepos() {
+  const getAllGitHubRepos = useCallback(async () => {
     Notify({ type: "loading", message: "loading..." });
     try {
       const { data, status } = await axios.get(GITHUB_API_REPO_URL);
@@ -49,7 +48,7 @@ const useGitHubRepos = () => {
     } finally {
       Notify({ type: "success", message: "Request completed" });
     }
-  }
+  }, []);
 
   return { gitHubRepos };
 };
