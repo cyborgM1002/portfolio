@@ -8,25 +8,21 @@ Welcome to my portfolio website showcasing various projects built using micro fr
 
 - Description: The main container for rendering micro frontends.
 - Technologies: React, Vue.js
-- GitHub Repository: [portfolio-container](link-to-repo)
 
 ### 2. Portfolio Main
 
 - Description: Micro frontend for displaying main portfolio content.
 - Technologies: React, TypeScript
-- GitHub Repository: [portfolio-main](link-to-repo)
 
 ### 3. React Mini Apps
 
 - Description: Collection of small projects built with React.
 - Technologies: React, JavaScript/TypeScript
-- GitHub Repository: [react-mini-projects](link-to-repo)
 
-### 4. Vue.js Mini Apps
+### 4. Vue Mini Apps
 
 - Description: Collection of small projects built with Vue.js.
 - Technologies: Vue.js, JavaScript/TypeScript
-- GitHub Repository: [vuejs-mini-projects](link-to-repo)
 
 ## Usage
 
