@@ -11,7 +11,10 @@ export const router = createBrowserRouter(
       <Route path='skills' element={<SkillsPage />} />
       <Route path='projects' element={<ProjectsPage />} />
       <Route path='experience' element={<ExperiencePage />} />
-      <Route path='react-apps'>
+      <Route path='react-apps' element={<MiniReactAppsHomePage />}>
+        <Route path='test' element={<MiniReactAppsHomePage />} />
+      </Route>
+      <Route path='vue-apps' element={<MiniReactAppsHomePage />}>
         <Route path='test' element={<MiniReactAppsHomePage />} />
       </Route>
     </Route>,
