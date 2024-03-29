@@ -17,12 +17,14 @@ module.exports = (webpackConfigEnv, argv) => {
     plugins: [
       new HtmlWebpackPlugin({
         inject: false,
+        bugg: "./src/assets/bugg.svg",
         template: "src/index.ejs",
         templateParameters: {
           isLocal: webpackConfigEnv && webpackConfigEnv.isLocal,
           orgName,
         },
       }),
+
     ],
   });
 };
