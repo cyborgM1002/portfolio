@@ -8,7 +8,8 @@
     "src/bugg-react-apps.tsx"
   ],
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "../portfolio-main/src/pages/mini-react-apps-home-page/MiniReactAppsHomePage.tsx"
   ],
   "exclude": [
     "src/**/*.test*"

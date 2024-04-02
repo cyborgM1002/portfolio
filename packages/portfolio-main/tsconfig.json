@@ -23,7 +23,8 @@
     "src/bugg-main-app.tsx"
   ],
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "../react-mini-apps/src/pages/passkey-app"
   ],
   "exclude": [
     "src/**/*.test*",

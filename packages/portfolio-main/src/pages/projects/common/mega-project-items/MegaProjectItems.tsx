@@ -1,8 +1,8 @@
-import { CapitalizeFirstLetter, web_card } from "../../index";
-import { GitHubRepos } from "../../../types/types";
+import { CapitalizeFirstLetter, web_card } from "../../../index";
+import { GitHubRepos } from "../../../../types/types";
 import React from "react";
 
-const ProjectItems = ({
+const MegaProjectItems = ({
   name,
   githubUrl,
   language,
@@ -62,4 +62,4 @@ const ProjectItems = ({
   );
 };
 
-export default ProjectItems;
+export default MegaProjectItems;
