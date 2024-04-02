@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useEffect, useState } from "react";
-import { Notify } from "../utils/utils";
 import { GITHUB_API_URL, USER_SUMMARY } from "../components";
 import { IntroType } from "../types/types";
 import axios from "axios";
+import { Notify } from "../pages";
 
 const useUserSummary = () => {
   const [intro, setIntro] = useState<IntroType>();

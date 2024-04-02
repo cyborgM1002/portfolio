@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import singleSpaReact from "single-spa-react";
 import Root from "./root.component";
-import MiniReactAppsHomePage from "./pages/home/MiniReactAppsHomePage";
 
 const lifecycles = singleSpaReact({
   React,
@@ -12,4 +11,4 @@ const lifecycles = singleSpaReact({
 
 export const { bootstrap, mount, unmount } = lifecycles;
 
-export { MiniReactAppsHomePage };
+export { default as PasskeyPage } from "./apps/passkey-app/PasskeyPage";

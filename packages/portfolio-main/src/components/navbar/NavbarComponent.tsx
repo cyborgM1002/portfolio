@@ -4,11 +4,9 @@ import { CapitalizeAllLetter, LogoIcon } from "../index";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { ReturnProperty } from "../../pages";
-import { IoIosArrowDown } from "react-icons/io";
 
 const NavbarComponent = () => {
   const [showMobileNavbar, setShowMobileNavbar] = useState<boolean>(false);
-  const [showProjectBar, setShowProjectBar] = useState<boolean>(false);
 
   const menuItems = [
     {
@@ -26,6 +24,11 @@ const NavbarComponent = () => {
       id: 3,
       to: "experience",
     },
+    {
+      title: "projects",
+      id: 4,
+      to: "projects",
+    },
   ];
 
   return (
@@ -38,26 +41,6 @@ const NavbarComponent = () => {
               {CapitalizeAllLetter(title)}
             </NavLink>
           ))}
-          <NavLink
-            onClick={() => setShowProjectBar(!showProjectBar)}
-            className='flex items-center justify-center gap-1 hover:text-[rgb(0,223,192)] relative'
-            to={"projects"}
-          >
-            {CapitalizeAllLetter("projects")}
-            <IoIosArrowDown />
-            {showProjectBar && (
-              <div className='z-10 top-12 bg-white absolute rounded shadow w-40 dark:bg-gray-700'>
-                <ul className='flex flex-col items-start justify-center gap-1 p-2 text-sm text-gray-700 dark:text-gray-200'>
-                  <NavLink className='hover:text-[rgb(0,223,192)]' to={"react-apps"}>
-                    {CapitalizeAllLetter("Mini React Apps")}
-                  </NavLink>
-                  <NavLink className='hover:text-[rgb(0,223,192)]' to={"vue-apps"}>
-                    {CapitalizeAllLetter("Mini Vue Apps")}
-                  </NavLink>
-                </ul>
-              </div>
-            )}
-          </NavLink>
         </div>
         <div
           onClick={() => setShowMobileNavbar(!showMobileNavbar)}
@@ -77,9 +60,6 @@ const NavbarComponent = () => {
               {CapitalizeAllLetter(title)}
             </NavLink>
           ))}
-          <NavLink className='hover:text-[rgb(0,223,192)]' to={"projects"}>
-            {CapitalizeAllLetter("projects")}
-          </NavLink>
         </div>
       </div>
     </div>

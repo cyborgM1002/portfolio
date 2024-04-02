@@ -1,9 +1,9 @@
-import ProjectItems from "./project-items/ProjectItems";
-import { GitHubRepos } from "../../types/types";
+import { GitHubRepos } from "../../../types/types";
 import React from "react";
-import useGitHubRepos from "../../hooks/useGitHubRepos";
+import useGitHubRepos from "../../../hooks/useGitHubRepos";
+import MegaProjectItems from "../common/mega-project-items/MegaProjectItems";
 
-const ProjectsPage = () => {
+const MegaProjectsHomePage = () => {
   const { gitHubRepos } = useGitHubRepos();
 
   return (
@@ -11,7 +11,7 @@ const ProjectsPage = () => {
       {gitHubRepos?.map(
         ({ id, name, githubUrl, language, created_at, updated_at, description }: GitHubRepos) => (
           <div key={id}>
-            <ProjectItems
+            <MegaProjectItems
               name={name}
               description={description}
               githubUrl={githubUrl}
@@ -26,4 +26,4 @@ const ProjectsPage = () => {
   );
 };
 
-export default ProjectsPage;
+export default MegaProjectsHomePage;
