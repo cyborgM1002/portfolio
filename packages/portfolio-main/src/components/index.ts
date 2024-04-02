@@ -3,7 +3,6 @@ import profile from "../../public/images/profile.jpeg";
 import ProjectsIcon from "../../public/icons/ProjectsIcon.png";
 import bug from "../../public/svg-logo/bug.svg";
 import { CapitalizeAllLetter } from "../utils/utils";
-import { menuItems } from "../Constants/navbar-items/navbarItems";
 import Bubbles from "./bubble-maker/Bubbles";
 import FooterComponent from "./footer/FooterComponent";
 import NavbarComponent from "./navbar/NavbarComponent";
@@ -17,7 +16,6 @@ export {
   profile,
   HomeIcon,
   SkillIcon,
-  menuItems,
   GITHUB_URL,
   USER_SUMMARY,
   ProjectsIcon,
