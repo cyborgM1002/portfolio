@@ -4,6 +4,7 @@
   "scripts": {
     "start": "webpack serve --port 9001",
     "start:standalone": "webpack serve --port 9001 --env standalone",
+    "css": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch",
     "build": "concurrently npm:build:*",
     "build:webpack": "webpack --mode=production",
     "analyze": "webpack --mode=production --env analyze",
@@ -31,6 +32,7 @@
     "identity-obj-proxy": "^3.0.0",
     "prettier": "^2.3.2",
     "pretty-quick": "^3.1.1",
+    "tailwindcss": "^3.4.3",
     "ts-config-single-spa": "^3.0.0",
     "typescript": "^4.3.5",
     "webpack": "^5.89.0",

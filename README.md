@@ -30,7 +30,8 @@ Welcome to my portfolio website showcasing various projects built using micro fr
 2. Navigate to the respective micro frontend directory.
 3. Install dependencies: `npm install` or `yarn install`
 4. Start the development server: `npm start` or `yarn start`
+5. Start the Tailwind CLI build process `npm run css` or `yarn css`
 
 ## License
 
-This project is licensed under the [MIT License](link-to-license).
+This project is licensed under the [MIT License](https://github.com/remy/mit-license).
