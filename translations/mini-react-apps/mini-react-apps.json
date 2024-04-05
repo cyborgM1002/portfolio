@@ -1,0 +1,33 @@
+{
+  "passkey-app": {
+    "landing": {
+      "title": "Welcome to PassKey App",
+      "subtitle": "PassKey is a secure application designed to manage and store passkeys securely. It features a simple login system and allows users to create, store, and access passkeys securely using a passkey-based authentication mechanism.",
+      "check-if-passkey-supported": "Click on button to check compatibility",
+      "continue-btn": "Click here"
+    },
+    "auth": {
+      "email-label": "Email",
+      "username-label": "Username",
+      "password-label": "Password",
+      "email-placeholder": "Enter your email",
+      "username-placeholder": "Enter your username"
+    },
+    "sign-in": {
+      "password-placeholder": "Enter your password",
+      "title": "Sign In to your account",
+      "submit": "Sign In"
+    },
+    "sign-up": {
+      "password-placeholder": "Enter a strong password",
+      "title": "Sign Up to continue",
+      "submit": "Sign Up"
+    },
+    "error": {
+      "modal": {
+        "title": "Oh Snap!",
+        "subtitle": "It seems Passkey is not supported in your browser or machine!!🙁"
+      }
+    }
+  }
+}

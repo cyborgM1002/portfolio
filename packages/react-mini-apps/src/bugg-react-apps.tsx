@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import singleSpaReact from "single-spa-react";
 import Root from "./root.component";
 export { default as PasskeyPage } from "./apps/passkey-app/PasskeyPage";
-
+export { default as ReactAppData } from "../../../translations/mini-react-apps/mini-react-apps.json";
 const lifecycles = singleSpaReact({
   React,
   ReactDOM,

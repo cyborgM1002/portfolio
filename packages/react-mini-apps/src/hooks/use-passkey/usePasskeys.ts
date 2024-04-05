@@ -1,7 +1,18 @@
-import { useEffect, useState } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useCallback, useState } from "react";
+import { UserCredentialType } from "../../types/types";
+import { Notify } from "../../apps";
 
-const usePasskeys = (username: string) => {
-  const [isPasskeySupported, setIsPasskeySupported] = useState(false);
+const usePasskeys = ({
+  showAuthCard,
+  userCredentials,
+  setIsUserLoggedIn,
+}: {
+  showAuthCard?: boolean;
+  userCredentials?: UserCredentialType;
+  setIsUserLoggedIn?: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
+  const [isPasskeySupported, setIsPasskeySupported] = useState<boolean>(false);
 
   const publicKeyCredentialCreationOptions = {
     rp: {
@@ -9,9 +20,9 @@ const usePasskeys = (username: string) => {
       id: "localhost",
     },
     user: {
-      name: username,
+      name: userCredentials?.username,
       id: new Uint8Array([1, 2, 3, 4]),
-      displayName: username,
+      displayName: userCredentials?.username,
     },
     challenge: new Uint8Array([21, 31, 105]),
     pubKeyCredParams: [
@@ -33,7 +44,7 @@ const usePasskeys = (username: string) => {
     attestation: "none" as AttestationConveyancePreference,
   };
 
-  useEffect(() => {
+  const checkIfPasskeySupported = useCallback(() => {
     try {
       if (
         window.PublicKeyCredential &&
@@ -52,11 +63,14 @@ const usePasskeys = (username: string) => {
         });
       }
     } catch (error) {
-      console.error("Error verifying platform authenticator:", error);
+      Notify({
+        type: "error",
+        message: error?.message || "Error verifying platform authenticator",
+      });
     }
-  }, [username]);
+  }, [showAuthCard]);
 
-  const createPasskey = async () => {
+  const createPasskey = useCallback(async () => {
     try {
       const credential = await navigator.credentials.create({
         publicKey: publicKeyCredentialCreationOptions,
@@ -76,32 +90,44 @@ const usePasskeys = (username: string) => {
 
       localStorage.setItem("publicKeyCredential", JSON.stringify(storedCredential));
     } catch (error) {
-      console.error("Error creating credential:", error);
+      Notify({ type: "error", message: error?.message || "Error creating passkey" });
     }
-  };
+  }, []);
 
-  const logInThroughPasskey = async () => {
+  const logInThroughPasskey = useCallback(async () => {
     try {
       const abortController = new AbortController();
       const storedCredential = localStorage.getItem("publicKeyCredential");
       const publicKeyCredentialRequestOptions = JSON.parse(storedCredential as string);
+
       const challenge = new Uint8Array([21, 31, 105]);
       publicKeyCredentialRequestOptions.challenge = challenge;
 
-      const credential = await navigator.credentials.get({
-        publicKey: publicKeyCredentialRequestOptions,
-        signal: abortController.signal,
-        mediation: "conditional" as CredentialMediationRequirement,
-      });
-      if (credential?.id === publicKeyCredentialRequestOptions?.id) {
-        setIsPasskeySupported(true);
+      if (!publicKeyCredentialRequestOptions) {
+        Notify({ type: "error", message: "No passkey found" });
+      } else {
+        const credential = await navigator.credentials.get({
+          publicKey: publicKeyCredentialRequestOptions,
+          signal: abortController.signal,
+          mediation: "conditional" as CredentialMediationRequirement,
+        });
+        if (credential?.id === publicKeyCredentialRequestOptions?.id) {
+          setIsUserLoggedIn(true);
+        } else {
+          setIsUserLoggedIn(false);
+        }
       }
     } catch (error) {
-      console.error("Error checking credential:", error);
+      Notify({ type: "error", message: "Error checking credential" });
     }
-  };
+  }, []);
 
-  return { isPasskeySupported, createPasskey, logInThroughPasskey };
+  return {
+    isPasskeySupported,
+    createPasskey,
+    logInThroughPasskey,
+    checkIfPasskeySupported,
+  };
 };
 
 export default usePasskeys;

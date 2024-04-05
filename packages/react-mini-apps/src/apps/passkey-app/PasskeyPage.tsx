@@ -1,54 +1,44 @@
-import { useEffect, useState } from "react";
-import CreatePasskeyModal from "./create-passkey-modal/CreatePasskeyModal";
-import usePasskeyUtility from "../../hooks/use-passkey/usePasskeys";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { BasicCard, ErrorModal, usePasskeys } from "..";
+import PasskeyApp from "../../assets/PasskeyApp.png";
+import { ReactAppData } from "../../bugg-react-apps";
+import PasskeyAuthCard from "./passkey-auth-card/PasskeyAuthCard";
+import { ReturnProperty } from "../../utils/utils";
 
 function PasskeyPage() {
-  const [value, setValue] = useState<string>("");
-  const [username, setUsername] = useState<string>("");
-  const { isPasskeySupported, logInThroughPasskey } = usePasskeyUtility(username);
-  console.log(isPasskeySupported);
+  const [showAuthCard, setShowAuthCard] = useState<boolean>(false);
+  const { isPasskeySupported, checkIfPasskeySupported } = usePasskeys({ showAuthCard });
 
-  useEffect(() => {
-    if (!isPasskeySupported) logInThroughPasskey();
-  }, []);
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (value) {
-      setUsername(value);
-      setValue("");
-    } else {
-      alert("Please enter a username");
-    }
+  const handleCloseAuthCard = () => {
+    setShowAuthCard(false);
   };
+  const handleOpenAuthCard = () => {
+    checkIfPasskeySupported();
+    setShowAuthCard(true);
+  };
+
   return (
-    <div className='w-full h-screen bg-gray-600 m-0 p-0 flex flex-col gap-10 justify-center items-center'>
-      {username?.length === 0 ? (
-        <form className='flex flex-col gap-10 justify-center items-center' onSubmit={handleSubmit}>
-          <label className='text-center text-2xl font-bold text-gray-700 dark:text-gray-100'>
-            Username
-          </label>
-          <input
-            className='w-80 h-10 p-3 focus:outline-none rounded'
-            type='text'
-            name='username'
-            value={value}
-            autoComplete='username webauthn'
-            placeholder='enter username'
-            onChange={(e) => setValue(e.target.value)}
-          />
-          <input
-            className='w-20 h-10 bg-green-600 rounded-md cursor-pointer hover:bg-green-700 text-gray-100 text-lg'
-            type='submit'
-            value={"log in"}
-          />
-        </form>
-      ) : (
-        <div className='flex flex-col gap-3 justify-center items-center'>
-          <CreatePasskeyModal username={username} />
-        </div>
-      )}
+    <div className='w-full my-10 relative'>
+      <div className='flex flex-col gap-14 justify-center items-center px-10 m-auto'>
+        <BasicCard
+          src={PasskeyApp}
+          title={ReactAppData["passkey-app"]["landing"]["title"]}
+          subtitle={ReactAppData["passkey-app"]["landing"]["subtitle"]}
+          btnTitle={ReactAppData["passkey-app"]["landing"]["check-if-passkey-supported"]}
+          btnText={ReactAppData["passkey-app"]["landing"]["continue-btn"]}
+          handleOnClick={handleOpenAuthCard}
+        />
+      </div>
+      <div
+        onClick={handleCloseAuthCard}
+        className={`${ReturnProperty({
+          condition: showAuthCard,
+          trueValue: "h-screen",
+          falseValue: "h-0",
+        })} w-full -top-10 absolute duration-500 bg-black/40 overflow-hidden flex items-center justify-center`}
+      >
+        {isPasskeySupported ? <PasskeyAuthCard authType='signUp' /> : <ErrorModal />}
+      </div>
     </div>
   );
 }
