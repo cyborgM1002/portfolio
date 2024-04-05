@@ -19,7 +19,7 @@ const Bubbles = () => {
             top: `${top}%`,
             left: `${left}%`,
           }}
-          className={`w-${width} h-${width} bg-[rgb(0,223,192)] animate-pulse rounded-full`}
+          className={`w-${width} h-${width} bg-brand animate-pulse rounded-full`}
         />
       ))}
     </>

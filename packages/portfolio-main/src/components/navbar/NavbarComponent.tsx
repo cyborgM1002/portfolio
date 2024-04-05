@@ -37,7 +37,7 @@ const NavbarComponent = () => {
       <div>
         <div className='text-xl md:flex gap-5 hidden '>
           {menuItems?.map(({ title, id, to }) => (
-            <NavLink key={id} className='hover:text-[rgb(0,223,192)]' to={to}>
+            <NavLink key={id} className='hover:text-brand' to={to}>
               {CapitalizeAllLetter(title)}
             </NavLink>
           ))}
@@ -56,7 +56,7 @@ const NavbarComponent = () => {
           })} flex flex-col justify-center items-start gap-5 md:hidden rounded-br-3xl bg-[rgb(1,134,115)] absolute top-12 left-0 duration-500 py-5 px-2`}
         >
           {menuItems?.map(({ title, id, to }) => (
-            <NavLink key={id} className='hover:text-[rgb(0,223,192)]' to={to}>
+            <NavLink key={id} className='hover:text-brand' to={to}>
               {CapitalizeAllLetter(title)}
             </NavLink>
           ))}
