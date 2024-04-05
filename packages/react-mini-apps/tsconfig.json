@@ -1,17 +1,31 @@
 {
   "extends": "ts-config-single-spa",
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "declarationDir": "dist"
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "declarationDir": "dist",
+    "importsNotUsedAsValues": "remove",
+    "esModuleInterop": true,
+    "emitDeclarationOnly": true,
+    "importHelpers": true,
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "baseUrl": "./src/**/*.{js,ts,tsx}",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ]
   },
+  "allowImportingTsExtensions": true,
   "files": [
     "src/bugg-react-apps.tsx"
   ],
   "include": [
     "src/**/*",
-    "../portfolio-main/src/pages/mini-react-apps-home-page/MiniReactAppsHomePage.tsx"
   ],
   "exclude": [
-    "src/**/*.test*"
+    "src/**/*.test*",
   ]
 }

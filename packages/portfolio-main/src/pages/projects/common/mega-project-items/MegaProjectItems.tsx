@@ -27,13 +27,13 @@ const MegaProjectItems = ({
         <div className='w-full h-1/5 flex justify-between items-center gap-2'>
           <button
             onClick={() => OpenGitHubUrl(githubUrl)}
-            className='w-4/5 h-10 rounded border text-xl text-white hover:text-gray-700 hover:bg-white border-[rgb(0,223,192)] bg-[rgb(0,223,192)]'
+            className='w-4/5 h-10 rounded border text-xl text-white hover:text-gray-700 hover:bg-white border-brand bg-brand'
           >
             Code
           </button>
           <button
             onClick={() => OpenGitHubUrl(githubUrl)}
-            className='w-1/5 h-10 rounded border text-lg hover:text-white border-[rgb(0,223,192)] hover:bg-[rgb(0,223,192)]'
+            className='w-1/5 h-10 rounded border text-lg hover:text-white border-brand hover:bg-brand'
           >
             Live
           </button>
