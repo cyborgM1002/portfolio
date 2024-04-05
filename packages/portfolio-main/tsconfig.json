@@ -8,14 +8,14 @@
     "esModuleInterop": true,
     "emitDeclarationOnly": true,
     "importHelpers": true,
-    "target": "ES2022",
+    "target": "ESNext",
     "module": "CommonJS",
     "moduleResolution": "node",
     "baseUrl": "./src/**/*.{js,ts,tsx}",
     "lib": [
       "DOM",
       "DOM.Iterable",
-      "ES2022"
+      "ESNext"
     ]
   },
   "allowImportingTsExtensions": true,
@@ -24,10 +24,8 @@
   ],
   "include": [
     "src/**/*",
-    "../react-mini-apps/src/pages/passkey-app"
   ],
   "exclude": [
     "src/**/*.test*",
-    "src/bugg-react-apps.ts",
   ]
 }
