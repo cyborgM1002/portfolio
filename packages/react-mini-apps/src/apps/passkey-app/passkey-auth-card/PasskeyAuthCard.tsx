@@ -5,7 +5,13 @@ import { UserCredentialType } from "../../../types/types";
 import { ReactAppData } from "../../../bugg-react-apps";
 import { ReturnProperty } from "../../../utils/utils";
 import { Route } from "react-router-dom";
-function PasskeyAuthCard({ authType }: { authType: "signUp" | "signIn" }) {
+
+export type PasskeyAuthCardType = {
+  authType: "signUp" | "signIn";
+  setShowAuthCard: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+function PasskeyAuthCard({ authType, setShowAuthCard }: PasskeyAuthCardType) {
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -21,6 +27,7 @@ function PasskeyAuthCard({ authType }: { authType: "signUp" | "signIn" }) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     try {
+      Notify({ type: "loading", message: "loading..." });
       e.preventDefault();
       if (!email) return Notify({ type: "error", message: "Email can't be empty!" });
       if (!username) return Notify({ type: "error", message: "Username can't be empty!" });
@@ -31,10 +38,13 @@ function PasskeyAuthCard({ authType }: { authType: "signUp" | "signIn" }) {
         username,
         password,
       });
-      resetForm();
       localStorage.setItem("userCredentials", JSON.stringify(userCredentials));
-      setIsUserLoggedIn(true);
-      Notify({ type: "success", message: "Successfully logged in" });
+      setTimeout(() => {
+        Notify({ type: "success", message: "Successfully logged in" });
+        setIsUserLoggedIn(true);
+        resetForm();
+        setShowAuthCard(false);
+      }, 1500);
     } catch (error) {
       Notify({ type: "error", message: error?.message || "Error checking credential" });
     }

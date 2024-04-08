@@ -1,10 +1,13 @@
 {
   "passkey-app": {
     "landing": {
-      "title": "Welcome to PassKey App",
+      "title": "Welcome to PassKey App.",
       "subtitle": "PassKey is a secure application designed to manage and store passkeys securely. It features a simple login system and allows users to create, store, and access passkeys securely using a passkey-based authentication mechanism.",
-      "check-if-passkey-supported": "Click on button to check compatibility",
-      "continue-btn": "Click here"
+      "passkey-not-supported-title": "Device not compatible!!",
+      "passkey-not-supported-subtitle": "It seems your device not compatible for passkey key creation.",
+      "passkey-supported-title": "Sign Up to create passkey.",
+      "passkey-supported-subtitle": "Your device is compatible for passkey key creation. Sign up to create passkey.",
+      "sign-up-btn": "Sign Up"
     },
     "auth": {
       "email-label": "Email",
@@ -27,6 +30,11 @@
       "modal": {
         "title": "Oh Snap!",
         "subtitle": "It seems Passkey is not supported in your browser or machine!!🙁"
+      }
+    },
+    "notification": {
+      "success-message": {
+        "passkey-supported-success": "Your browser supports the necessary APIs for passkey authentication."
       }
     }
   }
