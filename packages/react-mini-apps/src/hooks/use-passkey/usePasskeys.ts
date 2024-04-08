@@ -44,23 +44,22 @@ const usePasskeys = ({
     attestation: "none" as AttestationConveyancePreference,
   };
 
-  const checkIfPasskeySupported = useCallback(() => {
+  const checkIfPasskeySupported = useCallback(async () => {
     try {
       if (
         window.PublicKeyCredential &&
         (PublicKeyCredential as any).isUserVerifyingPlatformAuthenticatorAvailable &&
         (PublicKeyCredential as any).isConditionalMediationAvailable
       ) {
-        Promise.all([
+        const response = await Promise.all([
           (PublicKeyCredential as any)?.isUserVerifyingPlatformAuthenticatorAvailable(),
           (PublicKeyCredential as any)?.isConditionalMediationAvailable(),
-        ]).then((results) => {
-          if (results.every((r) => r === true)) {
-            setIsPasskeySupported(true);
-          } else {
-            setIsPasskeySupported(false);
-          }
-        });
+        ]);
+        if (response.every((r) => r === true)) {
+          setIsPasskeySupported(true);
+        } else {
+          setIsPasskeySupported(false);
+        }
       }
     } catch (error) {
       Notify({
