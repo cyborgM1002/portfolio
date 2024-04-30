@@ -18,3 +18,15 @@ export function ReturnProperty({
   if (condition) return trueValue;
   if (!condition) return falseValue;
 }
+export function ReturnEvent({
+  condition,
+  trueValue,
+  falseValue,
+}: {
+  condition: boolean;
+  trueValue: () => void;
+  falseValue: () => void;
+}) {
+  if (condition) return trueValue;
+  if (!condition) return falseValue;
+}
