@@ -8,7 +8,7 @@ export { default as MegaProjectsHomePage } from "./projects/mega-projects-home-p
 export { default as ProjectsHomePage } from "./projects/ProjectsHomePage";
 export { default as web_card } from "../../public/images/web_ard.jpg";
 export { default as Wallpaper1 } from "../../public/icons/Wallpaper1.svg";
-export { ReturnProperty } from "../utils/utils";
-export { CapitalizeFirstLetter } from "../utils/utils";
+export { ReturnProperty } from "../../../utils/utils";
+export { CapitalizeFirstLetter } from "../../../utils/utils";
 export { PageUnderDevelopment } from "../components/error-page/ErrorPage";
 export { GITHUB_API_REPO_URL } from "../env";

@@ -1,0 +1,6 @@
+{
+  "passkey": {
+    "sign-up": 1000,
+    "open-create-passkey": 300
+  }
+}

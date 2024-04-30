@@ -27,3 +27,14 @@ export type NotifyProps = {
   type: "success" | "error" | "loading";
   message: string;
 };
+
+export default interface StoredPublicKeyCredential {
+  username: string;
+  id: string;
+  type: string;
+  rawId: Array<number>;
+  response: {
+    clientDataJSON: Array<number>;
+    attestationObject: Array<number>;
+  };
+}

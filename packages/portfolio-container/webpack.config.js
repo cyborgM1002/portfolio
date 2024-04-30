@@ -24,7 +24,6 @@ module.exports = (webpackConfigEnv, argv) => {
           orgName,
         },
       }),
-
     ],
   });
 };

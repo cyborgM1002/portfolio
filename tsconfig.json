@@ -8,21 +8,11 @@
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     }
   },
-  "lib": [
-    "DOM",
-    "DOM.Iterable",
-    "ESNext"
-  ],
-  "include": [
-    "packages/**/*",
-    "*.ts",
-    "*.tsx"
-  ],
+  "lib": ["DOM", "DOM.Iterable", "ESNext"],
+  "include": ["packages/**/*", "*.ts", "*.tsx"],
   "exclude": [
     "node_modules/**",
     "packages/vue-mini-apps/**/*",

@@ -6,21 +6,27 @@ interface Props {
   title: string;
   subtitle: string;
   reverse?: boolean;
+  isUserLoggedIn: boolean;
+  passkeySignInTitle?: string;
   isPasskeySupported: boolean;
   passkeySupportedTitle: string;
-  passkeySupportedSubTitle: string;
+  passkeySignInSubTitle?: string;
   passkeySupportedBtnText: string;
+  passkeySupportedSubTitle: string;
   handleOnClick: () => void;
 }
 
-const BasicCard = ({
+const CommonImgCard = ({
   src,
   title,
   subtitle,
   reverse = true,
+  isUserLoggedIn,
   isPasskeySupported,
+  passkeySignInTitle,
   passkeySupportedTitle,
   passkeySupportedBtnText,
+  passkeySignInSubTitle,
   passkeySupportedSubTitle,
   handleOnClick,
 }: Props) => {
@@ -48,8 +54,17 @@ const BasicCard = ({
           <p className='mt-3 text-xs font-medium'>{subtitle}</p>
         </div>
         <div className='w-full mx-auto px-3 text-wrap text-left'>
-          <h1 className='text-lg font-semibold'>{passkeySupportedTitle}</h1>
-          <p className='mt-3 text-xs font-medium'>{passkeySupportedSubTitle}</p>
+          {isUserLoggedIn ? (
+            <>
+              <h1 className='text-lg font-semibold'>{passkeySupportedTitle}</h1>
+              <p className='mt-3 text-xs font-medium'>{passkeySupportedSubTitle}</p>
+            </>
+          ) : (
+            <>
+              <h1 className='text-lg font-semibold'>{passkeySignInTitle}</h1>
+              <p className='mt-3 text-xs font-medium'>{passkeySignInSubTitle}</p>
+            </>
+          )}
           {isPasskeySupported && (
             <button
               onClick={handleOnClick}
@@ -64,4 +79,4 @@ const BasicCard = ({
   );
 };
 
-export default BasicCard;
+export default CommonImgCard;
