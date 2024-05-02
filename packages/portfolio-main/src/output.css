@@ -598,38 +598,6 @@ video {
   top: 3rem;
 }
 
-.bottom-0 {
-  bottom: 0px;
-}
-
-.bottom-10 {
-  bottom: 2.5rem;
-}
-
-.left-10 {
-  left: 2.5rem;
-}
-
-.bottom-12 {
-  bottom: 3rem;
-}
-
-.left-12 {
-  left: 3rem;
-}
-
-.left-14 {
-  left: 3.5rem;
-}
-
-.left-20 {
-  left: 5rem;
-}
-
-.bottom-14 {
-  bottom: 3.5rem;
-}
-
 .-z-10 {
   z-index: -10;
 }

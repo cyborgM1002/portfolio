@@ -2,23 +2,33 @@ import { useCallback, useState } from "react";
 import React from "react";
 import { Notify, usePasskeys } from "../../index";
 import { ReactApiDelays, ReactAppData } from "../../../bugg-react-apps";
+import { webAuthnAbortService } from "../helpers/webAuthn";
 
-type PasskeyAuthCardType = {
+type PasskeySignInModalType = {
   setShowAuthCard: React.Dispatch<React.SetStateAction<boolean>>;
   setIsUserLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsUserRegistered: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function PasskeySignInModal({ setShowAuthCard, setIsUserLoggedIn }: PasskeyAuthCardType) {
+function PasskeySignInModal({
+  setShowAuthCard,
+  setIsUserLoggedIn,
+  setIsUserRegistered,
+}: PasskeySignInModalType) {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const { isPasskeySupported, logInThroughPasskey, checkIfPasskeySupported } = usePasskeys();
+  const { logInThroughPasskey } = usePasskeys();
 
   const handleLoginThroughPasskey = async () => {
-    await checkIfPasskeySupported();
-    if (!isPasskeySupported) {
-      await logInThroughPasskey();
+    webAuthnAbortService.cancelCeremony();
+
+    const response = await logInThroughPasskey();
+    if (!response) {
+      return;
     }
+    Notify({ type: "success", message: "Logged in successfully" });
+    setIsUserLoggedIn(true);
   };
   // constants
   const signUpDelay = ReactApiDelays["passkey"]["sign-up"];
@@ -45,6 +55,7 @@ function PasskeySignInModal({ setShowAuthCard, setIsUserLoggedIn }: PasskeyAuthC
           resetForm();
           setShowAuthCard(false);
           setIsUserLoggedIn(true);
+          setIsUserRegistered(true);
         }, signUpDelay);
       } catch (error) {
         Notify({
@@ -77,11 +88,12 @@ function PasskeySignInModal({ setShowAuthCard, setIsUserLoggedIn }: PasskeyAuthC
             </label>
             <input
               type='text'
-              name='username webauthn'
+              name='username'
+              autoComplete='username webauthn'
               value={username}
               placeholder={ReactAppData["passkey-app.auth-username-placeholder"]}
               onChange={(e) => setUsername(e.target.value)}
-              onFocus={handleLoginThroughPasskey}
+              onClick={handleLoginThroughPasskey}
               className='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white'
               required={true}
             />

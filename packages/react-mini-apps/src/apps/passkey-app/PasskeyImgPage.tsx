@@ -1,5 +1,5 @@
 import React from "react";
-import { ReturnProperty } from "../../pages";
+import { ReturnProperty } from "../../bugg-react-apps";
 
 interface Props {
   src: string;
@@ -16,7 +16,7 @@ interface Props {
   handleOnClick: () => void;
 }
 
-const CommonImgCard = ({
+const PasskeyImgPage = ({
   src,
   title,
   subtitle,
@@ -79,4 +79,4 @@ const CommonImgCard = ({
   );
 };
 
-export default CommonImgCard;
+export default PasskeyImgPage;

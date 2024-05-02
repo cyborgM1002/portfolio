@@ -3,7 +3,7 @@ import React from "react";
 import { Notify } from "../../index";
 import { ReactApiDelays, ReactAppData, ReturnProperty } from "../../../bugg-react-apps";
 
-type PasskeyAuthCardType = {
+type PasskeySignUpModalType = {
   setShowAuthCard: React.Dispatch<React.SetStateAction<boolean>>;
   setIsUserLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
   handleOpenCreatePasskeyModal: () => void;
@@ -13,7 +13,7 @@ function PasskeySignUpModal({
   setShowAuthCard,
   setIsUserLoggedIn,
   handleOpenCreatePasskeyModal,
-}: PasskeyAuthCardType) {
+}: PasskeySignUpModalType) {
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");

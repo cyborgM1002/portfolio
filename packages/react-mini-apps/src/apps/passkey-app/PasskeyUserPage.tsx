@@ -1,6 +1,8 @@
-import React from "react";
-import { ReturnProperty } from "../../pages";
+import React, { useEffect } from "react";
 import { FcBusinessman } from "react-icons/fc";
+import StoredPublicKeyCredentialType from "../../types/types";
+import { ReturnProperty } from "../../bugg-react-apps";
+import usePasskeys from "../../hooks/use-passkey/usePasskeys";
 
 interface Props {
   title: string;
@@ -10,10 +12,11 @@ interface Props {
   passkeyTitle: string;
   isUserLoggedIn: boolean;
   buttonLabel: string;
+  storedPublicKeyCredential: StoredPublicKeyCredentialType;
   handleOnClick: () => void;
 }
 
-const CommonDivCard = ({
+const PasskeyUserPage = ({
   title,
   subtitle,
   username,
@@ -21,8 +24,11 @@ const CommonDivCard = ({
   reverse = true,
   isUserLoggedIn,
   buttonLabel,
+  storedPublicKeyCredential,
   handleOnClick,
 }: Props) => {
+  const { isPasskeySupported } = usePasskeys();
+  useEffect(() => {}, [isPasskeySupported]);
   return (
     <div
       className={`${ReturnProperty({
@@ -54,7 +60,7 @@ const CommonDivCard = ({
         <div className='w-full mx-auto px-3 text-wrap text-left'>
           <div className='w-full'>
             <h1 className='text-lg font-semibold'>{passkeyTitle}</h1>
-            <h1 className='mt-3 text-xs font-medium'></h1>
+            <h1 className='mt-3 text-xs font-medium'>{storedPublicKeyCredential?.username}</h1>
           </div>
           {isUserLoggedIn && (
             <button
@@ -70,4 +76,4 @@ const CommonDivCard = ({
   );
 };
 
-export default CommonDivCard;
+export default PasskeyUserPage;
