@@ -10,10 +10,10 @@ const ErrorModal = () => {
         </span>
         <div className='flex flex-col gap-3 items-center justify-center'>
           <span className='text-3xl font-semibold'>
-            {ReactAppData["passkey-app"]["error"]["modal"]["title"]}
+            {ReactAppData["passkey-app.error-modal-title"]}
           </span>
           <span className='text-xl text-center px-5 font-light'>
-            {ReactAppData["passkey-app"]["error"]["modal"]["subtitle"]}
+            {ReactAppData["passkey-app.error-modal-passkey-app.error-subtitle"]}
           </span>
         </div>
       </div>

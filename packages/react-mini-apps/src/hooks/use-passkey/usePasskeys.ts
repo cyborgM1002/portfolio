@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
-import { UserCredentialType } from "../../types/types";
-import { Notify, StoredPublicKeyCredential } from "../../apps";
+import { Notify, StoredPublicKeyCredentialType } from "../../apps";
+import { webAuthnAbortService } from "../../apps/passkey-app/helpers/webAuthn";
 
 const usePasskeys = () => {
   const [isPasskeySupported, setIsPasskeySupported] = useState<boolean>(false);
@@ -18,10 +18,8 @@ const usePasskeys = () => {
         ]);
         if (response.every((r) => r === true)) {
           setIsPasskeySupported(true);
-          return;
         } else {
           setIsPasskeySupported(false);
-          return;
         }
       }
     } catch (error) {
@@ -34,6 +32,7 @@ const usePasskeys = () => {
   }, []);
 
   const createPasskey = useCallback(async () => {
+    webAuthnAbortService.cancelCeremony();
     try {
       const storedCredential = JSON.parse(localStorage.getItem("userCredentials"));
       if (!storedCredential) {
@@ -76,7 +75,7 @@ const usePasskeys = () => {
 
       const { id, type, rawId, response } = credential as any;
 
-      const storedPublicKeyCredential: StoredPublicKeyCredential = {
+      const storedPublicKeyCredential: StoredPublicKeyCredentialType = {
         username: storedCredential?.username,
         id: id,
         type: type,
@@ -94,7 +93,8 @@ const usePasskeys = () => {
     }
   }, []);
 
-  const logInThroughPasskey = useCallback(async () => {
+  const logInThroughPasskey = async () => {
+    webAuthnAbortService.cancelCeremony();
     try {
       const abortController = new AbortController();
       const publicKeyCredentialRequestOptions = JSON.parse(
@@ -107,25 +107,23 @@ const usePasskeys = () => {
       const challenge = new Uint8Array([21, 31, 105]);
       publicKeyCredentialRequestOptions.challenge = challenge;
 
-      if (!publicKeyCredentialRequestOptions) {
-        Notify({ type: "error", message: "No passkey found" });
-        return;
+      const credential = await navigator.credentials.get({
+        publicKey: publicKeyCredentialRequestOptions,
+        signal: abortController.signal,
+        mediation: "conditional" as CredentialMediationRequirement,
+      });
+      if (credential?.id === publicKeyCredentialRequestOptions?.id) {
+        return true;
       } else {
-        const credential = await navigator.credentials.get({
-          publicKey: publicKeyCredentialRequestOptions,
-          signal: abortController.signal,
-          mediation: "conditional" as CredentialMediationRequirement,
-        });
-        if (credential?.id === publicKeyCredentialRequestOptions?.id) {
-          return true;
-        } else {
-          return false;
-        }
+        return false;
       }
     } catch (error) {
-      Notify({ type: "error", message: "Error checking credential" });
+      Notify({
+        type: "error",
+        message: error?.message?.slice(0, 30) || "Error checking credential",
+      });
     }
-  }, []);
+  };
 
   return {
     isPasskeySupported,

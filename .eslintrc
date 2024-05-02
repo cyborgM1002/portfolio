@@ -16,11 +16,11 @@
 		"prettier"
 	],
 	"rules": {
-		"indent": ["warn", "tab"],
 		"linebreak-style": ["warn", "unix"],
 		"quotes": ["warn", "double"],
 		"semi": ["warn", "always"],
-		"no-unused-vars": "warn",
-		"no-unused-imports": "warn"
+		"no-unused-import": "warn",
+		"no-unused-vars": "error",
+        "no-undef": "error"
 	}
 }
