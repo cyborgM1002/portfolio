@@ -1,6 +1,6 @@
+import { ReactAppData } from "bugg-react-apps";
 import React from "react";
 import { FcOk } from "react-icons/fc";
-import { ReactAppData } from "../../../bugg-react-apps";
 
 type Props = {
   handleCloseCreatePasskeyModal: () => void;

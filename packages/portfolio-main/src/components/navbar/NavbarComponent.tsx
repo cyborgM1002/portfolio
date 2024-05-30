@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { PiBugDroidFill } from "react-icons/pi";
-import { CapitalizeAllLetter, LogoIcon } from "../index";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { ReturnProperty } from "../../pages";
+import LogoIcon from "@components/logo-component/LogoIcon";
+import { CapitalizeAllLetter, ReturnProperty } from "../../../../../utils/utils";
 
 const NavbarComponent = () => {
   const [showMobileNavbar, setShowMobileNavbar] = useState<boolean>(false);

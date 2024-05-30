@@ -1,5 +1,5 @@
 import React from "react";
-import { ReturnProperty } from "../../bugg-react-apps";
+import { ReturnProperty } from "../../../../../utils/utils";
 
 interface Props {
   src: string;

@@ -1,7 +1,7 @@
-import { GitHubRepos } from "../../../types/types";
+import useGitHubRepos from "@hooks/useGitHubRepos";
 import React from "react";
-import useGitHubRepos from "../../../hooks/useGitHubRepos";
-import MegaProjectItems from "../common/mega-project-items/MegaProjectItems";
+import MegaProjectItems from "./common/MegaProjectItems";
+import { GitHubRepos } from "types/types";
 
 const MegaProjectsHomePage = () => {
   const { gitHubRepos } = useGitHubRepos();

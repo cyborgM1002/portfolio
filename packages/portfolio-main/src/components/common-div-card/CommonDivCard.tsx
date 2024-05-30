@@ -1,6 +1,6 @@
 import React from "react";
-import { ReturnProperty } from "../../pages";
 import { FcBusinessman } from "react-icons/fc";
+import { ReturnProperty } from "../../../../../utils/utils";
 
 interface Props {
   title: string;

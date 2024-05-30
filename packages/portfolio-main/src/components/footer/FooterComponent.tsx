@@ -2,9 +2,9 @@ import { ImLinkedin } from "react-icons/im";
 import { ImGithub } from "react-icons/im";
 import { SiMaildotcom } from "react-icons/si";
 import { ImWhatsapp } from "react-icons/im";
-import { LogoIcon } from "../index";
 import React from "react";
 import { Link } from "react-router-dom";
+import LogoIcon from "@components/logo-component/LogoIcon";
 
 function FooterComponent() {
   return (

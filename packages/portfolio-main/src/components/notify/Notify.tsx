@@ -1,6 +1,10 @@
 import toast from "react-hot-toast";
-import { NotifyProps } from "../../types/types";
 import React from "react";
+
+interface NotifyProps {
+  type: "success" | "error" | "loading";
+  message: string;
+}
 
 export default function Notify({ type, message }: NotifyProps) {
   switch (type) {

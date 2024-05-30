@@ -1,4 +1,4 @@
-import { PageUnderDevelopment } from "../index";
+import { PageUnderDevelopment } from "@components/error-page/ErrorPage";
 import React from "react";
 
 const SkillsPage = () => {

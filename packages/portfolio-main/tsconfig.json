@@ -11,8 +11,15 @@
     "target": "ESNext",
     "module": "CommonJS",
     "moduleResolution": "node",
-    "baseUrl": "./src/**/*.{js,ts,tsx}",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"]
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "baseUrl": "./src",
+    "paths": {
+      "@routes/*": ["routes/*"],
+      "@components/*": ["components/*"],
+      "@hooks/*": ["hooks/*"],
+      "@pages/*": ["pages/*"],
+      "@assets/*": ["assets/*"]
+    }
   },
   "allowImportingTsExtensions": true,
   "files": ["src/bugg-main-app.tsx"],

@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import { GitHubRepos } from "../types/types";
 import axios from "axios";
-import { GITHUB_API_REPO_URL } from "../env";
-import { Notify } from "../pages";
+import { GitHubRepos } from "types/types";
+import Notify from "@components/notify/Notify";
+import { GITHUB_API_REPO_URL } from "env";
 
 const useGitHubRepos = () => {
   const [gitHubRepos, setGitHubRepos] = useState<GitHubRepos[]>([]);

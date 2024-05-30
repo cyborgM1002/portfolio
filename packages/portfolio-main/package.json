@@ -2,7 +2,7 @@
   "name": "@bugg/main-app",
   "license": "MIT",
   "scripts": {
-    "start": "webpack serve --port 9001",
+    "start": "webpack serve --port 9001 ts-node -r tsconfig-paths/register",
     "start:standalone": "webpack serve --port 9001 --env standalone",
     "css": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch",
     "build": "concurrently npm:build:*",
@@ -54,7 +54,8 @@
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "single-spa": "^6.0.1",
-    "single-spa-react": "^6.0.1"
+    "single-spa-react": "^6.0.1",
+    "tsconfig-paths": "^4.2.0"
   },
   "types": "dist/bugg-main-app.d.ts"
 }

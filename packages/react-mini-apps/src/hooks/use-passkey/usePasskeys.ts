@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
-import { Notify, StoredPublicKeyCredentialType } from "../../apps";
-import { webAuthnAbortService } from "../../apps/passkey-app/helpers/webAuthn";
+import { Notify } from "bugg-react-apps";
+import { webAuthnAbortService } from "@helpers/webAuthn";
+import { StoredPublicKeyCredentialType } from "@apps/passkey-app/PasskeyUserPage";
 
 const usePasskeys = () => {
   const [isPasskeySupported, setIsPasskeySupported] = useState<boolean>(false);

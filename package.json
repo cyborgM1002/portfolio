@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "this is portfolio app using create-single-spa",
   "scripts": {
-    "start1": "concurrently \"cd packages/portfolio-container && yarn start\" \"cd packages/portfolio-main && yarn start\" \"cd packages/react-mini-apps && yarn start\"",
     "start": "concurrently \"cd packages/portfolio-container && yarn start\" \"cd packages/portfolio-main && yarn start\" \"cd packages/react-mini-apps && yarn start\"  \"cd packages/vue-mini-apps && yarn serve\"",
     "install-all": "concurrently \"cd packages/portfolio-container && yarn install\" \"cd packages/portfolio-main && yarn install\" \"cd packages/react-mini-apps && yarn install\"  \"cd packages/vue-mini-apps && yarn install\"",
     "lint": "eslint .",
@@ -48,6 +47,7 @@
     "react-icons": "^5.0.1",
     "react-router-dom": "^6.22.3",
     "single-spa": "^6.0.1",
-    "single-spa-layout": "^2.2.0"
+    "single-spa-layout": "^2.2.0",
+    "tsconfig-paths": "^4.2.0"
   }
 }

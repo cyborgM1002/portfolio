@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { bug } from "../index";
+import bug from "@assets/svg-logo/bug.svg";
 import React from "react";
 
 const LogoIcon = () => {

@@ -1,5 +1,6 @@
-import { CapitalizeFirstLetter, web_card } from "../../../index";
-import { GitHubRepos } from "../../../../types/types";
+import { CapitalizeFirstLetter } from "../../../../../../utils/utils";
+import web_card from "@assets/images/web_ard.jpg";
+import { GitHubRepos } from "../../../types/types";
 import React from "react";
 
 const MegaProjectItems = ({

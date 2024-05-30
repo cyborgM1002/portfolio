@@ -1,7 +1,8 @@
-import { GITHUB_URL, profile } from "../index";
-import { IntroType } from "../../types/types";
+import { GITHUB_URL } from "env";
 import React from "react";
 import { Link } from "react-router-dom";
+import { IntroType } from "types/types";
+import profile from "@assets/images/profile.jpeg";
 
 function ImageCard({ bio, name, summary }: IntroType) {
   return (

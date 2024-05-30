@@ -1,6 +1,6 @@
 import React from "react";
 import { LuServerCrash } from "react-icons/lu";
-import { ReactAppData } from "../../bugg-react-apps";
+import { ReactAppData } from "bugg-react-apps";
 const ErrorModal = () => {
   return (
     <div className='w-full h-screen flex flex-col gap-10 justify-center items-center'>

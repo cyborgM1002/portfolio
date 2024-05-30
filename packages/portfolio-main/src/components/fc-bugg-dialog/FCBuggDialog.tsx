@@ -1,6 +1,5 @@
 import React from "react";
-import { ReturnProperty } from "../../pages";
-import { ReturnFC } from "../../../../utils/utils";
+import { ReturnFC, ReturnProperty } from "../../../../../utils/utils";
 
 interface Props {
   condition: boolean;

@@ -1,7 +1,6 @@
 import { useCallback, useState } from "react";
 import React from "react";
-import { Notify } from "../../index";
-import { ReactApiDelays, ReactAppData, ReturnProperty } from "../../../bugg-react-apps";
+import { Notify, ReactApiDelays, ReactAppData } from "bugg-react-apps";
 
 type PasskeySignUpModalType = {
   setShowAuthCard: React.Dispatch<React.SetStateAction<boolean>>;

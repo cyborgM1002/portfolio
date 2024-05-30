@@ -2,7 +2,7 @@
   "name": "@bugg/root-config",
   "license": "MIT",
   "scripts": {
-    "start": "webpack serve --port 9000 --env isLocal",
+    "start": "webpack serve --port 9000 --env isLocal ts-node -r tsconfig-paths/register",
     "lint": "eslint src --ext js,ts,tsx",
     "format": "prettier --write .",
     "check-format": "prettier --check .",

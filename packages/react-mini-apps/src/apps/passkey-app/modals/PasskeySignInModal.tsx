@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
 import React from "react";
-import { Notify, usePasskeys } from "../../index";
-import { ReactApiDelays, ReactAppData } from "../../../bugg-react-apps";
-import { webAuthnAbortService } from "../helpers/webAuthn";
+import usePasskeys from "@hooks/use-passkey/usePasskeys";
+import { webAuthnAbortService } from "@helpers/webAuthn";
+import { Notify, ReactApiDelays, ReactAppData } from "bugg-react-apps";
 
 type PasskeySignInModalType = {
   setShowAuthCard: React.Dispatch<React.SetStateAction<boolean>>;
@@ -31,7 +31,7 @@ function PasskeySignInModal({
     setIsUserLoggedIn(true);
   };
   // constants
-  const signUpDelay = ReactApiDelays["passkey"]["sign-up"];
+  const signUpDelay = ReactApiDelays.passkey_sign_up;
 
   const handleSignIn = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {

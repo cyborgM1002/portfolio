@@ -1,6 +1,8 @@
 import React from "react";
-import { ReturnProperty, Wallpaper1, ImageCard } from "../index";
 import useUserSummary from "../../hooks/useUserSummary";
+import Wallpaper1 from "@assets/icons/Wallpaper1.svg";
+import ImageCard from "@components/img-card/ImageCard";
+import { ReturnProperty } from "../../../../../utils/utils";
 
 const HomePage = () => {
   const { intro, loading } = useUserSummary();

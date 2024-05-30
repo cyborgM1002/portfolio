@@ -1,9 +1,18 @@
+import usePasskeys from "@hooks/use-passkey/usePasskeys";
+import { ReturnProperty } from "../../../../../utils/utils";
 import React, { useEffect } from "react";
 import { FcBusinessman } from "react-icons/fc";
-import StoredPublicKeyCredentialType from "../../types/types";
-import { ReturnProperty } from "../../bugg-react-apps";
-import usePasskeys from "../../hooks/use-passkey/usePasskeys";
 
+export interface StoredPublicKeyCredentialType {
+  username: string;
+  id: string;
+  type: string;
+  rawId: Array<number>;
+  response: {
+    clientDataJSON: Array<number>;
+    attestationObject: Array<number>;
+  };
+}
 interface Props {
   title: string;
   username: string;

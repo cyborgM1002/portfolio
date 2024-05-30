@@ -1,16 +1,14 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
-import {
-  HomePage,
-  ErrorPage,
-  SkillsPage,
-  ProjectsHomePage,
-  ExperiencePage,
-  MegaProjectsHomePage,
-} from "../pages/index";
 import RootLayout from "../root.layout";
 import React from "react";
-import MiniReactAppsHomePage from "../pages/projects/mini-react-apps-home-page/MiniReactAppsHomePage";
+import MiniReactAppsHomePage from "../pages/projects/MiniReactAppsHomePage";
 import { PasskeyPage } from "../../../react-mini-apps/src/bugg-react-apps";
+import HomePage from "@pages/home/HomePage";
+import ErrorPage from "@components/error-page/ErrorPage";
+import SkillsPage from "@pages/skills-page/SkillsPage";
+import ProjectsHomePage from "@pages/projects/ProjectsHomePage";
+import ExperiencePage from "@pages/experience-page/ExperiencePage";
+import MegaProjectsHomePage from "@pages/projects/MegaProjectsHomePage";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(

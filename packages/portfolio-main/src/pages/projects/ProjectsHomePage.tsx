@@ -1,7 +1,7 @@
+import { ProjectsType } from "types/types";
 import React from "react";
-import { ProjectsType } from "../../types/types";
-import ProjectCards from "./common/projects-cards/ProjectsCards";
 import { Outlet, useLocation } from "react-router-dom";
+import ProjectCards from "./common/ProjectsCards";
 
 const ProjectsHomePage = () => {
   const { pathname } = useLocation();

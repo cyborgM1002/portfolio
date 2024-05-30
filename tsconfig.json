@@ -6,9 +6,11 @@
     "jsx": "react",
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@utils/*": ["utils/*"],
+      "@translations/*": ["translations/*"],
+      "@packages/*": ["packages/*"]
     }
   },
   "lib": ["DOM", "DOM.Iterable", "ESNext"],

@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { usePasskeys, BuggDialog, FCBuggDialog } from "..";
-import PasskeyApp from "../../assets/PasskeyApp.png";
-import {
-  ReactAppData,
-  ReactApiDelays,
-  ReturnProperty,
-  ReturnEvent,
-  ReturnFC,
-} from "../../bugg-react-apps";
 import PasskeySignUpModal from "./modals/PasskeySignUpModal";
 import CreatePasskeyModal from "./modals/CreatePasskeyModal";
 import PasskeySignInModal from "./modals/PasskeySignInModal";
 import PasskeyImgPage from "./PasskeyImgPage";
 import PasskeyUserPage from "./PasskeyUserPage";
-
+import usePasskeys from "@hooks/use-passkey/usePasskeys";
+import { BuggDialog, FCBuggDialog, ReactApiDelays, ReactAppData } from "bugg-react-apps";
+import { ReturnEvent, ReturnFC, ReturnProperty } from "../../../../../utils/utils";
+import PasskeyApp from "@assets/PasskeyApp.png";
 function PasskeyPage() {
   const [showAuthCard, setShowAuthCard] = useState<boolean>(false);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(false);
@@ -22,7 +16,7 @@ function PasskeyPage() {
   const { isPasskeySupported, checkIfPasskeySupported, createPasskey } = usePasskeys();
 
   // constants
-  const openPasskeyDelay = ReactApiDelays["passkey"]["open-create-passkey"];
+  const openPasskeyDelay = ReactApiDelays.passkey_open_create_passkey;
 
   // storedCredentials
   const storedUserCredentials = JSON.parse(localStorage.getItem("userCredentials"));
