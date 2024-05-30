@@ -12,20 +12,10 @@
     "module": "CommonJS",
     "moduleResolution": "node",
     "baseUrl": "./src/**/*.{js,ts,tsx}",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ]
+    "lib": ["DOM", "DOM.Iterable", "ESNext"]
   },
   "allowImportingTsExtensions": true,
-  "files": [
-    "src/bugg-main-app.tsx"
-  ],
-  "include": [
-    "src/**/*",
-  ],
-  "exclude": [
-    "src/**/*.test*",
-  ]
+  "files": ["src/bugg-main-app.tsx"],
+  "include": ["src/**/*", "../utils"],
+  "exclude": ["src/**/*.test*"]
 }

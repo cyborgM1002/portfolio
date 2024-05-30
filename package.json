@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "this is portfolio app using create-single-spa",
   "scripts": {
+    "start1": "concurrently \"cd packages/portfolio-container && yarn start\" \"cd packages/portfolio-main && yarn start\" \"cd packages/react-mini-apps && yarn start\"",
     "start": "concurrently \"cd packages/portfolio-container && yarn start\" \"cd packages/portfolio-main && yarn start\" \"cd packages/react-mini-apps && yarn start\"  \"cd packages/vue-mini-apps && yarn serve\"",
-    "install": "concurrently \"cd packages/portfolio-container && yarn install\" \"cd packages/portfolio-main && yarn install\" \"cd packages/react-mini-apps && yarn install\"  \"cd packages/vue-mini-apps && yarn install\"",
+    "install-all": "concurrently \"cd packages/portfolio-container && yarn install\" \"cd packages/portfolio-main && yarn install\" \"cd packages/react-mini-apps && yarn install\"  \"cd packages/vue-mini-apps && yarn install\"",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write ."
@@ -18,8 +19,6 @@
     "@babel/preset-env": "^7.24.3",
     "@babel/preset-typescript": "^7.24.1",
     "@types/node": "^20.11.30",
-    "@types/react": "^18.2.69",
-    "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.3.1",
     "babel-loader": "^9.1.3",
     "concurrently": "^8.2.2",
@@ -43,7 +42,11 @@
     "webpack-dev-server": "^5.0.4"
   },
   "dependencies": {
+    "@types/react": "^18.2.69",
+    "@types/react-dom": "^18.2.22",
     "@typescript-eslint/parser": "^7.3.1",
+    "react-icons": "^5.0.1",
+    "react-router-dom": "^6.22.3",
     "single-spa": "^6.0.1",
     "single-spa-layout": "^2.2.0"
   }

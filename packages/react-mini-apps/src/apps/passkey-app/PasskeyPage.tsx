@@ -1,54 +1,146 @@
-import { useEffect, useState } from "react";
-import CreatePasskeyModal from "./create-passkey-modal/CreatePasskeyModal";
-import usePasskeyUtility from "../../hooks/use-passkey/usePasskeys";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { usePasskeys, BuggDialog, FCBuggDialog } from "..";
+import PasskeyApp from "../../assets/PasskeyApp.png";
+import {
+  ReactAppData,
+  ReactApiDelays,
+  ReturnProperty,
+  ReturnEvent,
+  ReturnFC,
+} from "../../bugg-react-apps";
+import PasskeySignUpModal from "./modals/PasskeySignUpModal";
+import CreatePasskeyModal from "./modals/CreatePasskeyModal";
+import PasskeySignInModal from "./modals/PasskeySignInModal";
+import PasskeyImgPage from "./PasskeyImgPage";
+import PasskeyUserPage from "./PasskeyUserPage";
 
 function PasskeyPage() {
-  const [value, setValue] = useState<string>("");
-  const [username, setUsername] = useState<string>("");
-  const { isPasskeySupported, logInThroughPasskey } = usePasskeyUtility(username);
-  console.log(isPasskeySupported);
+  const [showAuthCard, setShowAuthCard] = useState<boolean>(false);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(false);
+  const [isUserRegistered, setIsUserRegistered] = useState<boolean>(false);
+  const [showCreatePasskeyModal, setShowCreatePasskeyModal] = useState<boolean>(false);
+  const { isPasskeySupported, checkIfPasskeySupported, createPasskey } = usePasskeys();
+
+  // constants
+  const openPasskeyDelay = ReactApiDelays["passkey"]["open-create-passkey"];
+
+  // storedCredentials
+  const storedUserCredentials = JSON.parse(localStorage.getItem("userCredentials"));
+  const storedPublicKeyCredential = JSON.parse(localStorage.getItem("publicKeyCredential"));
 
   useEffect(() => {
-    if (!isPasskeySupported) logInThroughPasskey();
+    if (storedUserCredentials) {
+      setIsUserRegistered(true);
+      setIsUserLoggedIn(true);
+    }
+    checkIfPasskeySupported();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (value) {
-      setUsername(value);
-      setValue("");
-    } else {
-      alert("Please enter a username");
-    }
+  const handleCloseAuthCard = () => {
+    setShowAuthCard(false);
   };
+  const handleLogout = () => {
+    if (isUserLoggedIn && isUserRegistered) setIsUserLoggedIn(false);
+  };
+
+  const handleOpenAuthCard = () => {
+    setShowAuthCard(true);
+  };
+  const handleCloseCreatePasskeyModal = () => {
+    setShowCreatePasskeyModal(false);
+  };
+
+  const handleOpenCreatePasskeyModal = () => {
+    let timer: NodeJS.Timeout;
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      setShowCreatePasskeyModal(true);
+      setIsUserRegistered(true);
+    }, openPasskeyDelay);
+  };
+
   return (
-    <div className='w-full h-screen bg-gray-600 m-0 p-0 flex flex-col gap-10 justify-center items-center'>
-      {username?.length === 0 ? (
-        <form className='flex flex-col gap-10 justify-center items-center' onSubmit={handleSubmit}>
-          <label className='text-center text-2xl font-bold text-gray-700 dark:text-gray-100'>
-            Username
-          </label>
-          <input
-            className='w-80 h-10 p-3 focus:outline-none rounded'
-            type='text'
-            name='username'
-            value={value}
-            autoComplete='username webauthn'
-            placeholder='enter username'
-            onChange={(e) => setValue(e.target.value)}
+    <div className='w-full bg-transparent mt-20 relative'>
+      <div className='flex flex-col gap-14 justify-center items-center px-10 m-auto'>
+        {ReturnFC({
+          condition: isUserLoggedIn,
+          trueValue: (
+            <PasskeyUserPage
+              reverse={false}
+              username={storedUserCredentials?.username ?? ""}
+              storedPublicKeyCredential={storedPublicKeyCredential}
+              passkeyTitle={ReactAppData["passkey-app.passkey-title"]}
+              title={ReactAppData["react-app.welcome-text"]}
+              subtitle={ReactAppData["passkey-app.create-passkey-success-content"]}
+              isUserLoggedIn={isUserLoggedIn}
+              buttonLabel={ReturnProperty({
+                condition: storedPublicKeyCredential,
+                trueValue: ReactAppData["react-app.global-logout"],
+                falseValue: ReactAppData["passkey-app.create-passkey-cta"],
+              })}
+              handleOnClick={ReturnEvent({
+                condition: storedPublicKeyCredential,
+                trueValue: handleLogout,
+                falseValue: createPasskey,
+              })}
+            />
+          ),
+          falseValue: (
+            <PasskeyImgPage
+              src={PasskeyApp}
+              title={ReactAppData["passkey-app.landing-title"]}
+              subtitle={ReactAppData["passkey-app.landing-subtitle"]}
+              passkeySupportedTitle={ReturnProperty({
+                condition: isPasskeySupported,
+                trueValue: `${ReactAppData["passkey-app.landing-passkey-supported-title"]}`,
+                falseValue: `${ReactAppData["passkey-app.landing-passkey-not-supported-title"]}`,
+              })}
+              passkeySupportedSubTitle={ReturnProperty({
+                condition: isPasskeySupported,
+                trueValue: `${ReactAppData["passkey-app.landing-passkey-supported-subtitle"]}`,
+                falseValue: `${ReactAppData["passkey-app.landing-passkey-not-supported-subtitle"]}`,
+              })}
+              passkeySignInTitle={ReactAppData["passkey-app.auth-sign-in-title"]}
+              passkeySignInSubTitle={ReactAppData["passkey-app.auth-sign-in-subtitle"]}
+              isPasskeySupported={isPasskeySupported}
+              isUserLoggedIn={isUserLoggedIn}
+              buttonLabel={ReturnProperty({
+                condition: isUserRegistered && !isUserLoggedIn,
+                trueValue: `${ReactAppData["passkey-app.auth-sign-in-submit"]}`,
+                falseValue: `${ReactAppData["passkey-app.auth-sign-up-submit"]}`,
+              })}
+              handleOnClick={handleOpenAuthCard}
+            />
+          ),
+        })}
+      </div>
+
+      <FCBuggDialog
+        onClose={handleCloseAuthCard}
+        condition={showAuthCard}
+        FCcondition={isUserRegistered}
+        FCTrue={
+          <PasskeySignInModal
+            setShowAuthCard={setShowAuthCard}
+            setIsUserLoggedIn={setIsUserLoggedIn}
+            setIsUserRegistered={setIsUserRegistered}
           />
-          <input
-            className='w-20 h-10 bg-green-600 rounded-md cursor-pointer hover:bg-green-700 text-gray-100 text-lg'
-            type='submit'
-            value={"log in"}
+        }
+        FCFalse={
+          <PasskeySignUpModal
+            setShowAuthCard={setShowAuthCard}
+            setIsUserLoggedIn={setIsUserLoggedIn}
+            handleOpenCreatePasskeyModal={handleOpenCreatePasskeyModal}
           />
-        </form>
-      ) : (
-        <div className='flex flex-col gap-3 justify-center items-center'>
-          <CreatePasskeyModal username={username} />
-        </div>
-      )}
+        }
+      />
+
+      <BuggDialog onClose={handleCloseCreatePasskeyModal} condition={showCreatePasskeyModal}>
+        <CreatePasskeyModal
+          createPasskey={createPasskey}
+          handleCloseCreatePasskeyModal={handleCloseCreatePasskeyModal}
+        />
+      </BuggDialog>
     </div>
   );
 }

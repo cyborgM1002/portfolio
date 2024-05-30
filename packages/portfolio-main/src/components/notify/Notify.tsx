@@ -1,17 +1,17 @@
 import toast from "react-hot-toast";
 import { NotifyProps } from "../../types/types";
+import React from "react";
 
-export function Notify({ type, message }: NotifyProps) {
+export default function Notify({ type, message }: NotifyProps) {
   switch (type) {
     case "success":
-      return toast.success(message);
+      return toast.success(message ?? "Failed to load message");
     case "error":
-      return toast.error(message);
+      return toast.error(message ?? "Failed to load message");
     case "loading":
-      // eslint-disable-next-line no-case-declarations
-      const x = toast.loading(message);
+      const messageBar = toast.loading(message ?? "loading...");
       setTimeout(() => {
-        toast.dismiss(x);
+        toast.dismiss(messageBar);
       }, 1500);
       return;
     default:

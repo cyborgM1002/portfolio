@@ -32,7 +32,7 @@ const MiniReactAppsHomePage = () => {
     },
   ];
   return (
-    <>
+    <div className='w-full min-h-screen'>
       {pathname === "/projects/react-apps" ? (
         <div className='w-4/5 min-h-screen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-10 py-20'>
           {MiniReactApps?.map(({ id, name, description, link }: ProjectsType) => (
@@ -44,7 +44,7 @@ const MiniReactAppsHomePage = () => {
       ) : (
         <Outlet />
       )}
-    </>
+    </div>
   );
 };
 
