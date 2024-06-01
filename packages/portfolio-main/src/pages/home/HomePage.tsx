@@ -30,7 +30,7 @@ const HomePage = () => {
           <div className='text-3xl subpixel-antialiased text-gray-700'>
             {ReturnProperty({
               condition: loading,
-              trueValue: "Connecting to DB...",
+              trueValue: "Connecting...",
               falseValue: "Connected to DB...",
             })}
           </div>

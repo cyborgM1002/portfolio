@@ -8,5 +8,5 @@ export { default as CommonImgCard } from "./common-img-card/CommonImgCard";
 export { default as CommonDivCard } from "./common-div-card/CommonDivCard";
 export { default as BuggDialog } from "./bugg-dialog/BuggDialog";
 export { default as FCBuggDialog } from "./fc-bugg-dialog/FCBuggDialog";
-export { GITHUB_URL, GITHUB_API_URL, USER_SUMMARY } from "../env";
+export { GITHUB_URL, GITHUB_API_URL } from "../env";
 export { CapitalizeAllLetter } from "../../../utils/utils";
