@@ -1,6 +1,10 @@
 import { useCallback, useState } from "react";
-import { Notify, StoredPublicKeyCredentialType } from "../../apps";
+import { StoredPublicKeyCredentialType } from "../../apps";
 import { webAuthnAbortService } from "../../apps/passkey-app/helpers/webAuthn";
+import {
+  NotifyError,
+  NotifySuccess,
+} from "../../../../portfolio-main/src/components/notify/Notify";
 
 const usePasskeys = () => {
   const [isPasskeySupported, setIsPasskeySupported] = useState<boolean>(false);
@@ -23,10 +27,7 @@ const usePasskeys = () => {
         }
       }
     } catch (error) {
-      Notify({
-        type: "error",
-        message: error?.message?.slice(0, 30) || "Error verifying platform authenticator",
-      });
+      NotifyError(error?.message?.slice(0, 30));
       return;
     }
   }, []);
@@ -36,7 +37,7 @@ const usePasskeys = () => {
     try {
       const storedCredential = JSON.parse(localStorage.getItem("userCredentials"));
       if (!storedCredential) {
-        Notify({ type: "error", message: "User credential not found" });
+        NotifyError("User credential not found");
         return;
       }
       const publicKeyCredentialCreationOptions = {
@@ -88,7 +89,7 @@ const usePasskeys = () => {
 
       localStorage.setItem("publicKeyCredential", JSON.stringify(storedPublicKeyCredential));
     } catch (error) {
-      Notify({ type: "error", message: error?.message?.slice(0, 30) || "Error creating passkey" });
+      NotifyError(error?.message?.slice(0, 30));
       return;
     }
   }, []);
@@ -101,7 +102,7 @@ const usePasskeys = () => {
         localStorage.getItem("publicKeyCredential"),
       );
       if (!publicKeyCredentialRequestOptions) {
-        Notify({ type: "error", message: "No passkey found" });
+        NotifyError("No passkey found");
         return;
       }
       const challenge = new Uint8Array([21, 31, 105]);
@@ -118,10 +119,7 @@ const usePasskeys = () => {
         return false;
       }
     } catch (error) {
-      Notify({
-        type: "error",
-        message: error?.message?.slice(0, 30) || "Error checking credential",
-      });
+      NotifyError(error?.message?.slice(0, 30));
     }
   };
 

@@ -1,7 +1,10 @@
 import { useCallback, useState } from "react";
 import React from "react";
-import { Notify } from "../../index";
 import { ReactApiDelays, ReactAppData, ReturnProperty } from "../../../bugg-react-apps";
+import {
+  NotifyError,
+  NotifySuccess,
+} from "../../../../../portfolio-main/src/components/notify/Notify";
 
 type PasskeySignUpModalType = {
   setShowAuthCard: React.Dispatch<React.SetStateAction<boolean>>;
@@ -24,11 +27,11 @@ function PasskeySignUpModal({
   const handleSignUp = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       try {
-        Notify({ type: "loading", message: "Creating profile!!" });
+        NotifySuccess("Creating profile!!");
         e.preventDefault();
-        if (!email) return Notify({ type: "error", message: "Email can't be empty!" });
-        if (!username) return Notify({ type: "error", message: "Username can't be empty!" });
-        if (!password) return Notify({ type: "error", message: "Password can't be empty!" });
+        if (!email) return NotifyError("Email can't be empty!");
+        if (!username) return NotifyError("Username can't be empty!");
+        if (!password) return NotifyError("Password can't be empty!");
 
         localStorage.setItem(
           "userCredentials",
@@ -39,17 +42,14 @@ function PasskeySignUpModal({
           }),
         );
         setTimeout(() => {
-          Notify({ type: "success", message: "Profile created successfully" });
+          NotifySuccess("Profile created successfully");
           resetForm();
           setShowAuthCard(false);
           handleOpenCreatePasskeyModal();
           setIsUserLoggedIn(true);
         }, signUpDelay);
       } catch (error) {
-        Notify({
-          type: "error",
-          message: error?.message?.slice(0, 30) || "Error checking credential",
-        });
+        NotifyError(error?.message?.slice(0, 30));
       }
     },
     [email, username, password],

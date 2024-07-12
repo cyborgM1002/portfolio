@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { IntroType } from "../types/types";
 import axios from "axios";
-import { Notify } from "../pages";
 import { ADMIN_API_URL } from "../env";
+import { NotifyError, NotifySuccess } from "../components/notify/Notify";
 
 interface UserSummaryType {
   status: boolean;
@@ -21,12 +21,11 @@ const useUserSummary = () => {
   const userSummary = useCallback(async (): Promise<void> => {
     try {
       setLoading(true);
-      Notify({ type: "loading", message: "loading..." });
       const response = await axios.get(`${ADMIN_API_URL}/summary`);
-      const { data, message, status } = response.data;
+      const { data, message, status }: UserSummaryType = response.data;
 
       if (!status) {
-        Notify({ type: "error", message });
+        NotifyError(message);
         setLoading(true);
         return;
       }
@@ -39,7 +38,7 @@ const useUserSummary = () => {
       setLoading(false);
     } catch (error) {
       setLoading(true);
-      Notify({ type: "error", message: error?.message?.slice(0, 30) || "Request not completed" });
+      NotifyError(error?.message?.slice(0, 30));
     }
   }, []);
 

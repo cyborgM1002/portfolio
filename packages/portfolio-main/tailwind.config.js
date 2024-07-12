@@ -9,6 +9,9 @@ export default {
     extend: {
       colors: {
         brand: "rgb(0,223,192)",
+        primary: "#27374D",
+        secondary: "#526D82",
+        neutral: "#DDE6ED",
       },
       width: {
         authCard: "26rem",

@@ -1,6 +1,6 @@
-import { ProjectsType as ProjectCardsTypes } from "../../../../types/types";
+import { ProjectsType as ProjectCardsTypes } from "../../../types/types";
 import React from "react";
-import { profile } from "../../../../components";
+import { profile } from "../../../components";
 import { useNavigate } from "react-router-dom";
 
 const ProjectCards = ({ name, description, link }: ProjectCardsTypes) => {

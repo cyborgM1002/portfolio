@@ -1,9 +1,9 @@
 import React from "react";
-import { ProjectsType } from "../../../types/types";
-import ProjectCards from "../common/projects-cards/ProjectsCards";
+import { ProjectsType } from "../../types/types";
 import { Outlet, useLocation } from "react-router-dom";
+import ProjectCards from "./common/ProjectsCards";
 
-const MiniReactAppsHomePage = () => {
+const ReactAppsHomePage = () => {
   const { pathname } = useLocation();
   const MiniReactApps = [
     {
@@ -48,4 +48,4 @@ const MiniReactAppsHomePage = () => {
   );
 };
 
-export default MiniReactAppsHomePage;
+export default ReactAppsHomePage;

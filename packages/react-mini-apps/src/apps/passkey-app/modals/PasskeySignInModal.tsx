@@ -1,8 +1,12 @@
 import { useCallback, useState } from "react";
 import React from "react";
-import { Notify, usePasskeys } from "../../index";
+import { usePasskeys } from "../../index";
 import { ReactApiDelays, ReactAppData } from "../../../bugg-react-apps";
 import { webAuthnAbortService } from "../helpers/webAuthn";
+import {
+  NotifyError,
+  NotifySuccess,
+} from "../../../../../portfolio-main/src/components/notify/Notify";
 
 type PasskeySignInModalType = {
   setShowAuthCard: React.Dispatch<React.SetStateAction<boolean>>;
@@ -27,7 +31,7 @@ function PasskeySignInModal({
     if (!response) {
       return;
     }
-    Notify({ type: "success", message: "Logged in successfully" });
+    NotifySuccess("Logged in successfully");
     setIsUserLoggedIn(true);
   };
   // constants
@@ -36,32 +40,28 @@ function PasskeySignInModal({
   const handleSignIn = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       try {
-        Notify({ type: "loading", message: "Logging...!!" });
         e.preventDefault();
-        if (!username) return Notify({ type: "error", message: "Username can't be empty!" });
-        if (!password) return Notify({ type: "error", message: "Password can't be empty!" });
+        if (!username) return NotifyError("Username can't be empty!");
+        if (!password) return NotifyError("Password can't be empty!");
 
         const userCredentials = JSON.parse(localStorage.getItem("userCredentials"));
         if (!userCredentials) {
-          Notify({ type: "error", message: "User credential not found" });
+          NotifyError("User credential not found");
           return;
         }
         if (userCredentials.username !== username || userCredentials.password !== password) {
-          Notify({ type: "error", message: "Incorrect username or password" });
+          NotifyError("Incorrect username or password");
           return;
         }
         setTimeout(() => {
-          Notify({ type: "success", message: "Logged in successfully" });
+          NotifySuccess("Logged in successfully");
           resetForm();
           setShowAuthCard(false);
           setIsUserLoggedIn(true);
           setIsUserRegistered(true);
         }, signUpDelay);
       } catch (error) {
-        Notify({
-          type: "error",
-          message: error?.message?.slice(0, 30) || "Error checking credential",
-        });
+        NotifyError(error?.message?.slice(0, 30));
       }
     },
     [username, password],

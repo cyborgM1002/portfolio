@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { ReturnProperty, Wallpaper1, ImageCard } from "../index";
 import useUserSummary from "../../hooks/useUserSummary";
+import { BuggDialog } from "../../components";
+import SignInModal from "../../components/sign-in-modal/SignInModal";
 
 const HomePage = () => {
+  const [openAdminLoginModal, setOpenAdminLoginModal] = useState<boolean>(false);
   const { intro, loading } = useUserSummary();
 
+  const openAdminLogin = () => {
+    setOpenAdminLoginModal(true);
+  };
+  const closeAdminLoginModal = () => {
+    setOpenAdminLoginModal(false);
+  };
   return (
-    <div className='w-full h-screen flex justify-center items-center gap-3'>
+    <div className='w-full h-screen flex justify-center items-center gap-3 relative'>
       <div className='w-full h-screen px-5 z-0 flex justify-center items-center gap-5'>
         <div
           className={`
@@ -17,6 +26,7 @@ const HomePage = () => {
             })} duration-500 flex flex-col justify-center items-center gap-10`}
         >
           <img
+            onDoubleClick={openAdminLogin}
             className={`flex justify-center duration-500 items-center border-[10px] border-[rgb(1,134,115,0.6)] rounded-full ${ReturnProperty(
               {
                 condition: loading,
@@ -45,6 +55,9 @@ const HomePage = () => {
           <ImageCard bio={intro?.bio} name={intro?.name} summary={intro?.summary} />
         </div>
       </div>
+      <BuggDialog condition={openAdminLoginModal} onClose={closeAdminLoginModal}>
+        <SignInModal closeAdminLoginModal={closeAdminLoginModal} />
+      </BuggDialog>
     </div>
   );
 };

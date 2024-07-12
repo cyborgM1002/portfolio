@@ -22,8 +22,3 @@ export type ProjectsType = {
   description: string;
   link?: string;
 };
-
-export type NotifyProps = {
-  type: "success" | "error" | "loading";
-  message: string;
-};
